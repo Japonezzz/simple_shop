@@ -1,4 +1,7 @@
-package model;
+package model.Eating;
+
+import model.DateTerm;
+import model.Goods;
 
 public class SweetDrinks extends Goods {
     private DateTerm dateTerm;
