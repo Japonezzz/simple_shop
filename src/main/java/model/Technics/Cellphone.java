@@ -40,4 +40,22 @@ public class Cellphone extends Technics {
     public void setTimeWork(int timeWork) {
         this.timeWork = timeWork;
     }
+
+    public void Show() {
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.getName() +
+                "\nQuantity: " + this.getQuantity() +
+                "\nDescription: " + this.getDescription() +
+                "\nPrice: " + this.getPrice() + " $" +
+                "\nGuarantee: " + this.getGuarantee() + " month" +
+                "\nRAM information:" + this.getRamSpecific() +
+                "\nCPU information:" + this.getCpuSpecific() +
+                "\nOperation System: " + this.getOS() +
+                "\nDiagonal: " + this.getDiagonal() +
+                "\nBattery life: " + this.getTimeWork();
+    }
 }

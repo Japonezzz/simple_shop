@@ -33,4 +33,10 @@ public class RAM {
     public void setRamType(String ramType) {
         this.ramType = MemoryType.valueOf(ramType);
     }
+
+    @Override
+    public String toString() {
+        return "\n\tVolume of memory: " + this.volume +
+                "\n\tMemoryType: " + this.ramType.toString();
+    }
 }

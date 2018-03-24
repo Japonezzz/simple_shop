@@ -47,4 +47,8 @@ public class Clothes extends Goods {
     public void setCountCountry(int countCountry) {
         this.countCountry = countCountry;
     }
+
+    public void Show() {
+
+    }
 }

@@ -1,12 +1,15 @@
 package model;
 
 public abstract class Goods {
+
+    //fields
     private int id;
     private String name;
     private int quantity;
     private String description;
     private Double price;
 
+    //constructors
     public Goods() {
     }
 
@@ -18,6 +21,8 @@ public abstract class Goods {
         this.price = price;
     }
 
+
+    //get set methodos for fields
     public int getId() {
         return id;
     }
@@ -57,4 +62,7 @@ public abstract class Goods {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    // abstract methods
+    public abstract void Show();
 }

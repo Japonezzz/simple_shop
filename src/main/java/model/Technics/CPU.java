@@ -27,4 +27,10 @@ public class CPU {
     public void setFrequency(Double frequency) {
         this.frequency = frequency;
     }
+
+    @Override
+    public String toString() {
+        return  "\n\tCores count: " + this.cores +
+                "\n\tFrequency: " + this.frequency + "GHz";
+    }
 }

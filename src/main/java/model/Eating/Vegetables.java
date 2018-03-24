@@ -12,4 +12,8 @@ public class Vegetables extends Goods {
         this.dateTerm = dateTerm;
         this.sort = sort;
     }
+
+    public void Show() {
+
+    }
 }

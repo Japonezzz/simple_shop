@@ -7,6 +7,10 @@ public class Computer extends Technics {
     public Computer() {
     }
 
+    public void Show() {
+
+    }
+
     public Computer(int id, String name, int quantity, String description, Double price, int guarantee, RAM ramSpecific, CPU cpuSpecific, CPU gpuProc, RAM gpuRAM) {
         super(id, name, quantity, description, price, guarantee, ramSpecific, cpuSpecific);
         this.gpuProc = gpuProc;

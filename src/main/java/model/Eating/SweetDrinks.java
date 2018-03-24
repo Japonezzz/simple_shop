@@ -18,4 +18,8 @@ public class SweetDrinks extends Goods {
     public void setDateTerm(DateTerm dateTerm) {
         this.dateTerm = dateTerm;
     }
+
+    public void Show() {
+
+    }
 }
