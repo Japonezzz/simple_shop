@@ -8,6 +8,8 @@ import model.Eating.Vegetables;
 import model.Eating.Water;
 import model.Technics.Cellphone;
 import model.Technics.Computer;
+import model.Technics.CPU;
+import model.Technics.RAM;
 
 import java.util.ArrayList;
 
@@ -23,12 +25,13 @@ public class StoreController {
 
     public StoreController() {
         this.phones = new ArrayList<Cellphone>();
-//        this.comps = comps;
-//        this.sweets = sweet;
-//        this.waters = waters;
-//        this.drinks = drinks;
-//        this.veges = veges;
-//        this.cloth = cloth;
+        this.comps = new ArrayList<Computer>();
+        this.sweets = new ArrayList<Sweets>();
+        this.waters = new ArrayList<Water>();
+        this.drinks = new ArrayList<SweetDrinks>();
+        this.veges = new ArrayList<Vegetables>();
+        this.cloth = new ArrayList<Clothes>();
+        money = 0.0;
   }
 
     public StoreController(ArrayList<Cellphone> phones, ArrayList<Computer> comps, ArrayList<Sweets> sweet,
@@ -40,6 +43,7 @@ public class StoreController {
         this.drinks = drinks;
         this.veges = veges;
         this.cloth = cloth;
+        money = 0.0;
     }
 
     public ArrayList<Cellphone> getPhones() {
@@ -107,22 +111,24 @@ public class StoreController {
     }
 
 
-    public static void main(String[] args) {
+   // public static void main(String[] args) {
 
-        StoreController sc = new StoreController();
-     //   sc.initialization();
-        String s = "aaa";
+    //    StoreController sc = new StoreController();
+    //    sc.initialization();
+      //  String s = "aaa";
 
-       // Goods gd = new Cellphone(17, "tele", 12, "qwertyy", 21.1);
+     //   Goods gd = new Cellphone(0, "iPhone", 2, "Sell Phone from Apple", (double) 400, 12, new RAM(12, "DDR5"),
+          //      new CPU(5, 1.2), "IOS", 5.2, 10);
 
-    //    sc.Sale(gd);
+     //   sc.Sale(gd);
 
-    }
-
-   // void initialization(){
-   //     for (int i=0; i<3; i++)
-    //        phones.add(new Cellphone(i++, "aaa", (int)(i*Math.random()), "1111111111", i*Math.random()));
    // }
+
+    //void initialization(){
+       // for (int i=0; i<3; i++)
+        //    phones.add(new Cellphone(i, "iPhone", 20, "Sell Phone from Apple", (double) 400, 12, new RAM(12, "DDR5"),
+        //            new CPU(5, 1.2), "IOS", 5.2, 10));
+  //  }
 
         public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
         {
@@ -267,6 +273,11 @@ public class StoreController {
                             money += ph.getPrice() * good.getQuantity();
                         }
                         break;
+                    }
+                    else
+                    {
+                        System.out.println("The good was not found in DB");
+                        return "The good was not found in DB";
                     }
                 }
             }
