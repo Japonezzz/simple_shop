@@ -1,11 +1,13 @@
 package model.Technics;
 
+import enums.MemoryType;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RAM {
     private int volume;
-    private String ramType;
+    private MemoryType ramType;
 
     public RAM() {
 
@@ -13,7 +15,7 @@ public class RAM {
 
     public RAM(int volume, String ramType) {
         this.volume = volume;
-        this.ramType = ramType;
+        this.ramType = MemoryType.valueOf(ramType);
     }
 
     public int getVolume() {
@@ -24,11 +26,11 @@ public class RAM {
         this.volume = volume;
     }
 
-    public String getRamType() {
+    public MemoryType getRamType() {
         return ramType;
     }
 
     public void setRamType(String ramType) {
-        this.ramType = ramType;
+        this.ramType = MemoryType.valueOf(ramType);
     }
 }
