@@ -14,14 +14,14 @@ import model.Technics.RAM;
 import java.util.ArrayList;
 
 public class StoreController {
-    private static ArrayList<Cellphone> phones;
-    private static ArrayList<Computer> comps;
-    private static ArrayList<Sweets> sweets;
-    private static ArrayList<Water> waters;
-    private static ArrayList<SweetDrinks> drinks;
-    private static ArrayList<Vegetables> veges;
-    private static ArrayList<Clothes> cloth;
-    private static Double money;
+    private static ArrayList<Cellphone> phones;                        //store phones list
+    private static ArrayList<Computer> comps;                          //store computers list
+    private static ArrayList<Sweets> sweets;                           //store sweets list
+    private static ArrayList<Water> waters;                            //store waters list
+    private static ArrayList<SweetDrinks> drinks;                      //store sweet drinks list
+    private static ArrayList<Vegetables> veges;                        //store vegetables list
+    private static ArrayList<Clothes> cloth;                           //store clothes list
+    private static Double money;                                       //store wallet
 
     public StoreController() {
         this.phones = new ArrayList<Cellphone>();
@@ -32,10 +32,12 @@ public class StoreController {
         this.veges = new ArrayList<Vegetables>();
         this.cloth = new ArrayList<Clothes>();
         money = 0.0;
-  }
+  }                                        //no parameters constructor
 
-    public StoreController(ArrayList<Cellphone> phones, ArrayList<Computer> comps, ArrayList<Sweets> sweet,
-                           ArrayList<Water> waters, ArrayList<SweetDrinks> drinks, ArrayList<Vegetables> veges, ArrayList<Clothes> cloth) {
+    public StoreController(ArrayList<Cellphone> phones,                    //constructor with parameters
+                           ArrayList<Computer> comps, ArrayList<Sweets> sweet,
+                           ArrayList<Water> waters, ArrayList<SweetDrinks> drinks,
+                           ArrayList<Vegetables> veges, ArrayList<Clothes> cloth) {
         this.phones = phones;
         this.comps = comps;
         this.sweets = sweet;
@@ -46,6 +48,7 @@ public class StoreController {
         money = 0.0;
     }
 
+                                                                            //getters and setters of lists of goods
     public ArrayList<Cellphone> getPhones() {
         return phones;
     }
@@ -111,72 +114,56 @@ public class StoreController {
     }
 
 
-   // public static void main(String[] args) {
 
-    //    StoreController sc = new StoreController();
-    //    sc.initialization();
-      //  String s = "aaa";
-
-     //   Goods gd = new Cellphone(0, "iPhone", 2, "Sell Phone from Apple", (double) 400, 12, new RAM(12, "DDR5"),
-          //      new CPU(5, 1.2), "IOS", 5.2, 10);
-
-     //   sc.Sale(gd);
-
-   // }
-
-    //void initialization(){
-       // for (int i=0; i<3; i++)
-        //    phones.add(new Cellphone(i, "iPhone", 20, "Sell Phone from Apple", (double) 400, 12, new RAM(12, "DDR5"),
-        //            new CPU(5, 1.2), "IOS", 5.2, 10));
-  //  }
-
+                                                                        //search goods by name (string) function
+                                                                        //returns list of founded goods
         public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
         {
 
-        ArrayList<Goods> founded = new ArrayList<Goods>();
+        ArrayList<Goods> founded = new ArrayList<Goods>();       //founded products list
 
         if (to_find == "") {
-            System.out.print("Search string is empty");
+            System.out.print("Search string is empty");             //returns null if search string was empty
             return null;
         }
 
 
         for (Goods g : goods) {
             if (g.getName().contains(to_find))
-                founded.add(g);
+                founded.add(g);                                         //adding founded by name goods to list
         }
             if(founded != null)
             {
-                return founded;
+                return founded;                                         //returns list of founded goods
             }
             else {
                 System.out.print("Nothing of values was found");
-                return null;
+                return null;                                                //returns null if nothing found
             }
         }
 
-
-        public static String Supply (Goods good)
+                                                                        //Supply function
+        public static String Supply (Goods good)                        //returns string
         {
 
 
             if (good==null) {
                 System.out.println("Nothing was supplied");
-                return "Nothing was supplied";
+                return "Nothing was supplied";                                          //if taken good is null
             }
 
-          if(good instanceof Cellphone)
+          if(good instanceof Cellphone)                                                 //if taken good is a Cellphone
           {
               for (Cellphone ph: phones)
               {
                   if(ph.getId() == good.getId())
                   {
-                      ph.setQuantity(ph.getQuantity() + good.getQuantity());
+                      ph.setQuantity(ph.getQuantity() + good.getQuantity());            //adding supplied quantity to good if its id was founded on list
                   }
               }
-              phones.add((Cellphone) good);
+              phones.add((Cellphone) good);                                             //adding good if its id wasn't founded in list
           }
-           else if(good instanceof Computer)
+           else if(good instanceof Computer)                                            //if taken good is a Computer
             {
                 for (Computer comp: comps) {
                     if(comp.getId() == good.getId())
@@ -186,7 +173,7 @@ public class StoreController {
                 }
                 comps.add((Computer) good);
             }
-           else if(good instanceof Sweets)
+           else if(good instanceof Sweets)                                               //if taken good is a Sweet
             {
                 for (Sweets sw: sweets) {
                     if(sw.getId() == good.getId())
@@ -196,7 +183,7 @@ public class StoreController {
                 }
                 sweets.add((Sweets) good);
             }
-           else if(good instanceof Water)
+           else if(good instanceof Water)                                               //if taken good is water
             {
                 for (Water wtr: waters) {
                     if(wtr.getId() == good.getId())
@@ -206,7 +193,7 @@ public class StoreController {
                 }
                 waters.add((Water) good);
             }
-           else if(good instanceof SweetDrinks)
+           else if(good instanceof SweetDrinks)                                         //if taken good is Sweet Drink
             {
                 for (SweetDrinks sd: drinks) {
                     if(sd.getId() == good.getId())
@@ -217,7 +204,7 @@ public class StoreController {
                 }
                 drinks.add((SweetDrinks) good);
             }
-           else if(good instanceof Vegetables)
+           else if(good instanceof Vegetables)                                          //if taken good is a Vegetable
             {
                 for (Vegetables veg: veges) {
                     if(veg.getId() == good.getId())
@@ -227,7 +214,7 @@ public class StoreController {
                 }
                 veges.add((Vegetables) good);
             }
-           else if(good instanceof Clothes)
+           else if(good instanceof Clothes)                                              //if taken good is Cloth
             {
                 for (Clothes cl: cloth) {
                     if(cl.getId() == good.getId())
@@ -237,51 +224,51 @@ public class StoreController {
                 }
                 cloth.add((Clothes) good);
             }
-            else {
+            else {                                                                          // returns "" if good type wasn't founded on store
               System.out.println("Wrong kind of good");
               return "";
           }
 
           System.out.println("Good was added successfully");
-          return "Good was added successfully";
+          return "Good was added successfully";                                             //if good or quantity was added returns positive string
 
         }
 
-
-        public static String Sale (Goods good)
+                                                                        //Goods Sales function
+        public static String Sale (Goods good)                          //returns string
         {
             if (good==null)
             {
                 System.out.println("You have nothing to sale");
-                return "You have nothing to sale";
+                return "You have nothing to sale";                      //if good is null returns negative string
             }
 
-            if(good instanceof Cellphone)
+            if(good instanceof Cellphone)                               //if taken good is Cellphone
             {
                 for (Cellphone ph: phones)
                 {
-                    if(ph.getId() == good.getId())
+                    if(ph.getId() == good.getId())                       //if it was founded on our Cellphone list
                     {
-                        if(good.getQuantity() > ph.getQuantity())
+                        if(good.getQuantity() > ph.getQuantity())        //if quantity of that kind of Cellphones is not enough to sell
                         {
                             System.out.println("We don't have such quantity in our store");
                             return "We don't have such quantity in our store";
                         }
                         else
                         {
-                            ph.setQuantity(ph.getQuantity() - good.getQuantity());
-                            money += ph.getPrice() * good.getQuantity();
+                            ph.setQuantity(ph.getQuantity() - good.getQuantity());              //reduce the quantity of this kind of Cellphone on store
+                            money += ph.getPrice() * good.getQuantity();                        //take payment on our storeWallet
                         }
                         break;
                     }
                     else
                     {
-                        System.out.println("The good was not found in DB");
+                        System.out.println("The good was not found in DB");                     //if good we want to sell was not founded on our store
                         return "The good was not found in DB";
                     }
                 }
             }
-            else if(good instanceof Computer)
+            else if(good instanceof Computer)                                                   //if taken good is Computer
             {
                 for (Computer comp: comps)
                 {
@@ -301,7 +288,7 @@ public class StoreController {
                     }
                 }
             }
-            else if(good instanceof Sweets)
+            else if(good instanceof Sweets)                                                      //if taken good is Sweets
             {
                 for (Sweets sw: sweets)
                 {
@@ -321,7 +308,7 @@ public class StoreController {
                     }
                 }
             }
-            else if(good instanceof Water)
+            else if(good instanceof Water)                                                         //if taken good is Water
             {
                 for (Water wtr: waters)
                 {
@@ -341,7 +328,7 @@ public class StoreController {
                     }
                 }
             }
-            else if(good instanceof SweetDrinks)
+            else if(good instanceof SweetDrinks)                                                 //if taken good is Sweet Drink
             {
                 for (SweetDrinks sd: drinks)
                 {
@@ -361,7 +348,7 @@ public class StoreController {
                     }
                 }
             }
-            else if(good instanceof Vegetables)
+            else if(good instanceof Vegetables)                                                  //if taken good is Vegetable
             {
                 for (Vegetables veg: veges) {
                     if(veg.getId() == good.getId())
@@ -380,7 +367,7 @@ public class StoreController {
                     }
                 }
             }
-            else if(good instanceof Clothes)
+            else if(good instanceof Clothes)                                                     //if taken good is Clothes
             {
                 for (Clothes cl: cloth) {
                     if(cl.getId() == good.getId())
@@ -400,11 +387,11 @@ public class StoreController {
                 }
             }
             else {
-                System.out.println("Wrong kind of good");
+                System.out.println("Wrong kind of good");                                   //if kind of good wasn't founded in store
                 return "Wrong kind of good";
             }
 
-            System.out.println("Sell was successfully");
+            System.out.println("Sell was successfully");                                    //if transaction took place - returns positive string
             return "Sell was successfully";
         }
 }
