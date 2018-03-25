@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ToggleGroup;
 import model.Clothes;
 import model.DateTerm;
 import model.Eating.SweetDrinks;
@@ -24,9 +25,7 @@ import model.Technics.Computer;
 import model.Technics.RAM;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class FXML_Shop_Controller implements Initializable{
 
@@ -80,14 +79,34 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     void OnActionRB_up(ActionEvent event) {
 
+        ArrayList<Goods> increase = goods;
+        Collections.sort(increase, new Comparator<Goods>(){
+            public int compare(Goods o1, Goods o2){
+                if(o1.getPrice() == o2.getPrice())
+                    return 0;
+                return o1.getPrice() > o2.getPrice() ? -1 : 1;
+            }
+        });
+        FillingListView(increase);
     }
 
     @FXML
     void OnActionRB_down(ActionEvent event) {
-
+        ArrayList<Goods> decrease = goods;
+        Collections.sort(decrease, new Comparator<Goods>(){
+            public int compare(Goods o1, Goods o2){
+                if(o1.getPrice() == o2.getPrice())
+                    return 0;
+                return o1.getPrice() < o2.getPrice() ? -1 : 1;
+            }
+        });
+        FillingListView(decrease);
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        final ToggleGroup Rbuttons = new ToggleGroup();
+        rb_down.setToggleGroup(Rbuttons);
+        rb_up.setToggleGroup(Rbuttons);
         InitCategory();
         InitGoods();
     }
