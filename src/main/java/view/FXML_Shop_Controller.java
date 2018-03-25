@@ -24,12 +24,14 @@ import model.Technics.Cellphone;
 import model.Technics.Computer;
 import model.Technics.RAM;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.*;
 
 public class FXML_Shop_Controller implements Initializable{
 
     ArrayList<Goods> goods;
+    ArrayList<Goods> founded;
 
     @FXML
     private JFXListView<String> lv_info;
@@ -63,14 +65,96 @@ public class FXML_Shop_Controller implements Initializable{
     }
 
     @FXML
-    void OnMouseClickLV_category(ActionEvent event) {
+    void OnMouseClickLV_category(javafx.scene.input.MouseEvent event) {
+        founded = new ArrayList<Goods>();
+        Integer selected = lv_category.getSelectionModel().getSelectedIndex();
 
+    switch (selected)
+    {
+        case(0):
+            {
+            founded.addAll(goods);
+            break;
+        }
+
+        case(1):
+        {
+            for (Goods a:goods) {
+                if(a instanceof Computer);
+                founded.add(a);
+            }
+            break;
+        }
+
+        case(2):
+        {
+            {
+                for (Goods a:goods) {
+                    if(a instanceof Cellphone);
+                    founded.add(a);
+                }
+            }
+            break;
+        }
+
+        case(3):
+            {
+                {
+                    for (Goods a:goods) {
+                        if(a instanceof Clothes);
+                        founded.add(a);
+                    }
+                }
+                break;
+            }
+        case(4):
+        {
+            {
+                for (Goods a:goods) {
+                    if(a instanceof Vegetables);
+                    founded.add(a);
+                }
+            }
+            break;
+        }
+        case(5):
+        {
+            {
+                for (Goods a:goods) {
+                    if(a instanceof Water);
+                    founded.add(a);
+                }
+            }
+            break;
+        }
+        case(6):
+        {
+            {
+                for (Goods a:goods) {
+                    if(a instanceof SweetDrinks);
+                    founded.add(a);
+                }
+            }
+            break;
+        }
+        case(7):
+        {
+            {
+                for (Goods a:goods) {
+                    if(a instanceof Sweets);
+                    founded.add(a);
+                }
+            }
+            break;
+        }
     }
+    FillingListView(founded);
+}
+
 
     @FXML
     void OnActionB_search(ActionEvent event) {
-        //StoreController storeController = new StoreController();
-        ArrayList<Goods> founded =  StoreController.Search_in_category(goods,fld_search.getText());
+        founded =  StoreController.Search_in_category(goods,fld_search.getText());
 
         FillingListView(founded);
 
@@ -112,7 +196,7 @@ public class FXML_Shop_Controller implements Initializable{
     }
     private void InitCategory(){
         ObservableList<String> items = FXCollections.observableArrayList (
-                "Усі категорії", "PC", "Смартфони", "Одяг", "Овочі", "Одяг", "Вода", "Солодка вода", "Солодощі");
+                "Усі категорії", "PC", "Смартфони", "Одяг", "Овочі", "Вода", "Солодка вода", "Солодощі");
         lv_category.setItems(items);
     }
     private void InitGoods(){
