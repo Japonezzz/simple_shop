@@ -8,6 +8,9 @@ public class Clothes extends Goods {
     private int countWorkers;
     private int countCountry;
 
+    public Clothes() {
+    }
+
     public Clothes(int id, String name, int quantity, String description, Double price, Date dateCreation, String nameBrend, int countWorkers, int countCountry) {
         super(id, name, quantity, description, price);
         this.dateCreation = dateCreation;
@@ -49,6 +52,18 @@ public class Clothes extends Goods {
     }
 
     public void Show() {
+        System.out.println(this);
+    }
 
+    @Override
+    public String toString() {
+        return "Name: " + this.getName() +
+                "\nQuantity: " + this.getQuantity() +
+                "\nDescription: " + this.getDescription() +
+                "\nPrice: " + this.getPrice() + " $" +
+                "\nCreation date: " + this.getDateCreation() +
+                "\nBrend: " + this.getNameBrend() +
+                "\nNumber of worker: " + this.getCountWorkers() +
+                "\nNumber of country: " + this.getCountCountry();
     }
 }
