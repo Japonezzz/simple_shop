@@ -1,0 +1,70 @@
+
+    public static void TestAllClass() {
+        TestCellPhone();
+        System.out.println("----------------------------------------------------------------------------");
+        TestComputer();
+        System.out.println("----------------------------------------------------------------------------");
+        TestWater();
+        System.out.println("----------------------------------------------------------------------------");
+        TestSweetDrinks();
+        System.out.println("----------------------------------------------------------------------------");
+        TestSweet();
+        System.out.println("----------------------------------------------------------------------------");
+        TestVegetables();
+        System.out.println("----------------------------------------------------------------------------");
+        TestClothes();
+    }
+
+    public static void TestCellPhone() {
+        Cellphone cellphone = //new Cellphone();
+                new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400,
+                        12, new RAM(12, "DDR5"), new CPU(5, 1.2),
+                        "IOS", 5.2, 10);
+        cellphone.Show();
+    }
+
+    public static void TestComputer() {
+        Computer computer = //new Computer();
+                new Computer(2, "DELL", 15, "Famous NoteBook in the world", (double)800, 12,
+                        new RAM(12, "DDR5"), new CPU(5, 7.2),
+                        new CPU(2, 5.0), new RAM(4, "DDR4"));
+        computer.Show();
+    }
+
+    public static void TestWater() {
+        Water water = //new Water();
+                new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1);
+        water.Show();
+    }
+
+    public static void TestSweetDrinks() {
+        SweetDrinks sweetDrinks = //new SweetDrinks();
+                new SweetDrinks(4, "Dobra Voda z limonom", 10, "Voda z krana", (double)1,
+                        new DateTerm(new Date(2018,01,20), (double)27,
+                                12));
+        sweetDrinks.Show();
+    }
+
+    public static void TestSweet() {
+        Sweets sweet = //new Sweets();
+                new Sweets(5, "Kartoha", 10, "Mnogo kroxmalia", (double)1,
+                        new DateTerm(new Date(2018,03,20), (double)22,
+                                2));
+        sweet.Show();
+    }
+
+    public static void TestVegetables() {
+        Vegetables vegetables = //new Vegetables();
+                new Vegetables(6, "Romashka", 10, "Vkusno", (double)1,
+                        new DateTerm(new Date(2018,03,20), (double)15,
+                                4), "best of the best");
+        vegetables.Show();
+    }
+
+    public static void TestClothes() {
+        Clothes clothes = //new Clothes();
+                new Clothes(7, "Krosovki", 10, "Kloviu brend", (double)1,
+                        new Date(2018, 02, 20), "Adibas",
+                        2000, 20);
+        clothes.Show();
+    }
