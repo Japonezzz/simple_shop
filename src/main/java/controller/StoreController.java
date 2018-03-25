@@ -149,7 +149,7 @@ public class StoreController {
 
             if (good==null) {
                 System.out.println("Nothing was supplied");
-                return "Nothing was supplied";                                          //if taken good is null
+                return "Nothing was supplied";                                          //if taken good is null returns negative string
             }
 
           if(good instanceof Cellphone)                                                 //if taken good is a Cellphone
@@ -224,7 +224,7 @@ public class StoreController {
                 }
                 cloth.add((Clothes) good);
             }
-            else {                                                                          // returns "" if good type wasn't founded on store
+            else {                                                                          // returns empty string if good type wasn't founded on store
               System.out.println("Wrong kind of good");
               return "";
           }
@@ -247,7 +247,7 @@ public class StoreController {
             {
                 for (Cellphone ph: phones)
                 {
-                    if(ph.getId() == good.getId())                       //if it was founded on our Cellphone list
+                    if(ph.getId() == good.getId())                       //if it was founded on store's Cellphone list
                     {
                         if(good.getQuantity() > ph.getQuantity())        //if quantity of that kind of Cellphones is not enough to sell
                         {
@@ -263,7 +263,7 @@ public class StoreController {
                     }
                     else
                     {
-                        System.out.println("The good was not found in DB");                     //if good we want to sell was not founded on our store
+                        System.out.println("The good was not found in DB");                     //if good was not founded on our store
                         return "The good was not found in DB";
                     }
                 }
