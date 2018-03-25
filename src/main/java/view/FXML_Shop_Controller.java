@@ -24,7 +24,6 @@ import model.Technics.Cellphone;
 import model.Technics.Computer;
 import model.Technics.RAM;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.*;
 
@@ -88,63 +87,51 @@ public class FXML_Shop_Controller implements Initializable{
 
         case(2):
         {
-            {
                 for (Goods a:goods) {
                     if(a instanceof Cellphone);
                     founded.add(a);
                 }
-            }
             break;
         }
 
         case(3):
             {
-                {
                     for (Goods a:goods) {
                         if(a instanceof Clothes);
                         founded.add(a);
                     }
-                }
                 break;
             }
         case(4):
         {
-            {
                 for (Goods a:goods) {
                     if(a instanceof Vegetables);
                     founded.add(a);
                 }
-            }
             break;
         }
         case(5):
         {
-            {
                 for (Goods a:goods) {
                     if(a instanceof Water);
                     founded.add(a);
                 }
-            }
             break;
         }
         case(6):
         {
-            {
                 for (Goods a:goods) {
                     if(a instanceof SweetDrinks);
                     founded.add(a);
                 }
-            }
             break;
         }
         case(7):
         {
-            {
                 for (Goods a:goods) {
                     if(a instanceof Sweets);
                     founded.add(a);
                 }
-            }
             break;
         }
     }
