@@ -30,6 +30,8 @@ import java.util.ResourceBundle;
 
 public class FXML_Shop_Controller implements Initializable{
 
+    ArrayList<Goods> goods;
+
     @FXML
     private JFXListView<String> lv_info;
 
@@ -62,7 +64,16 @@ public class FXML_Shop_Controller implements Initializable{
     }
 
     @FXML
+    void OnMouseClickLV_category(ActionEvent event) {
+
+    }
+
+    @FXML
     void OnActionB_search(ActionEvent event) {
+        //StoreController storeController = new StoreController();
+        ArrayList<Goods> founded =  StoreController.Search_in_category(goods,fld_search.getText());
+
+        FillingListView(founded);
 
     }
 
@@ -87,7 +98,7 @@ public class FXML_Shop_Controller implements Initializable{
     }
     private void InitGoods(){
         //StoreController store = new StoreController();
-        ArrayList<Goods> goods = new ArrayList();
+        goods = new ArrayList();
         goods.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1));
         goods.add( new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400,
                 12, new RAM(12, "DDR5"), new CPU(5, 1.2),
@@ -108,10 +119,12 @@ public class FXML_Shop_Controller implements Initializable{
                 new Date(2018, 02, 20), "Adibas",
                 2000, 20));
 
+        FillingListView(goods);
 
-
+    }
+    private void FillingListView(ArrayList<Goods> Items){
         ArrayList<String> names = new ArrayList();
-        for (Goods S:goods) {
+        for (Goods S:Items) {
             names.add(S.GetListItem());
         }
         ObservableList<String> goodsCollection = FXCollections.observableArrayList(names);

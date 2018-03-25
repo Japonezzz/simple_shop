@@ -49,7 +49,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <JFXListView fx:id="lv_category" layoutY="25.0" prefHeight="375.0" prefWidth="152.0" />
+                  <JFXListView fx:id="lv_category" layoutY="25.0" onMouseClicked="#OnMouseClickLV_category" prefHeight="375.0" prefWidth="152.0" />
                   <Label alignment="CENTER" layoutY="-4.0" prefHeight="27.0" prefWidth="157.0" text="Категорії товарів" />
                </children>
             </AnchorPane>
