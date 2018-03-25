@@ -8,48 +8,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="view.FXML_Shop_Controller">
+<AnchorPane prefHeight="560.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML_Shop_Controller">
    <children>
-      <GridPane prefHeight="400.0" prefWidth="608.0">
+      <GridPane prefHeight="560.0" prefWidth="876.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="551.0" minWidth="10.0" prefWidth="456.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="152.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="731.0" minWidth="10.0" prefWidth="713.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="143.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="289.0" minHeight="0.0" prefHeight="289.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="76.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="267.0" minHeight="10.0" prefHeight="156.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="401.0" minHeight="0.0" prefHeight="401.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="102.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="btn_goods" layoutX="14.0" layoutY="14.0" onAction="#OnActionBtn_goods" prefHeight="25.0" prefWidth="71.0" style="-fx-border-color: #000000;" text="Товари">
+                  <JFXButton fx:id="btn_goods" layoutX="14.0" layoutY="14.0" onAction="#OnActionBtn_goods" prefHeight="37.0" prefWidth="203.0" style="-fx-border-color: #000000;" text="Перейти на форму товарів">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField fx:id="fld_search" alignment="CENTER" layoutX="31.0" layoutY="66.0" maxWidth="395.0" minWidth="240.0" onAction="#OnActionFld_search" prefHeight="31.0" prefWidth="395.0" />
+                  <JFXTextField fx:id="fld_search" alignment="CENTER" layoutX="33.0" layoutY="96.0" maxWidth="497.0" minWidth="240.0" onAction="#OnActionFld_search" prefHeight="31.0" prefWidth="497.0" promptText="Пошук" />
+                  <JFXButton fx:id="b_search" layoutX="530.0" layoutY="90.0" onAction="#OnActionB_search" prefHeight="44.0" prefWidth="118.0" style="-fx-border-color: #000000; -fx-background-color: #ffff80;" text="Пошук" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </AnchorPane>
-            <JFXListView fx:id="lv_info" prefHeight="289.0" prefWidth="291.0" GridPane.rowIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label alignment="CENTER" layoutY="8.0" prefHeight="31.0" prefWidth="132.0" text="Сортування за ціною" textAlignment="CENTER">
+                  <Label alignment="CENTER" layoutY="8.0" prefHeight="31.0" prefWidth="152.0" text="Сортування за ціною" textAlignment="CENTER">
                      <font>
-                        <Font size="11.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
-                  <JFXRadioButton fx:id="rb_up" layoutX="14.0" layoutY="39.0" onAction="#OnActionRB_up" text="↑" />
-                  <JFXRadioButton fx:id="rb_down" layoutX="14.0" layoutY="64.0" onAction="#OnActionRB_down" text="↓" />
+                  <JFXRadioButton fx:id="rb_up" layoutX="14.0" layoutY="62.0" onAction="#OnActionRB_up" text="↑" />
+                  <JFXRadioButton fx:id="rb_down" layoutX="14.0" layoutY="100.0" onAction="#OnActionRB_down" text="↓" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <JFXComboBox fx:id="cb_search" layoutY="2.0" onAction="#OnActionCB_search" prefHeight="25.0" prefWidth="152.0" promptText="Виберіть категорію" />
+                  <JFXListView fx:id="lv_category" layoutY="25.0" prefHeight="375.0" prefWidth="152.0" />
+                  <Label alignment="CENTER" layoutY="-4.0" prefHeight="27.0" prefWidth="157.0" text="Категорії товарів" />
                </children>
             </AnchorPane>
+            <JFXTreeTableView fx:id="ttv_info" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
