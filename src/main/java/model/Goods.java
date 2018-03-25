@@ -63,6 +63,10 @@ public abstract class Goods {
         this.price = price;
     }
 
+    public String GetListItem(){
+        return this.name + " \t" + this.price + "$";
+    }
+
     // abstract methods
     public abstract void Show();
 }

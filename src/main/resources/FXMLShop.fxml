@@ -53,7 +53,7 @@
                   <Label alignment="CENTER" layoutY="-4.0" prefHeight="27.0" prefWidth="157.0" text="Категорії товарів" />
                </children>
             </AnchorPane>
-            <JFXTreeTableView fx:id="ttv_info" GridPane.rowIndex="1" />
+            <JFXListView fx:id="lv_info" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
