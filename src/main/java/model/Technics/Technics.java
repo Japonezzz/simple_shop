@@ -10,8 +10,8 @@ public abstract class Technics extends Goods {
     public Technics() {
     }
 
-    public Technics(int id, String name, int quantity, String description, Double price, int guarantee, RAM ramSpecific, CPU cpuSpecific) {
-        super(id, name, quantity, description, price);
+    public Technics(int id, String name, int quantity, String description, Double price, String category, int guarantee, RAM ramSpecific, CPU cpuSpecific) {
+        super(id, name, quantity, description, price, category);
         this.guarantee = guarantee;
         this.ramSpecific = ramSpecific;
         this.cpuSpecific = cpuSpecific;

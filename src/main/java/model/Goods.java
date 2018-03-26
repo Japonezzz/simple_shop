@@ -10,17 +10,28 @@ public abstract class Goods {
     private int quantity;           //поле кількості одиниць товару на складі
     private String description;     //поле опису товару
     private Double price;           //поле ціни за одиницю товару
+    private String category;        //pole kategorii
 
     //constructors
     public Goods() {
     }
 
-    public Goods(int id, String name, int quantity, String description, Double price) {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Goods(int id, String name, int quantity, String description, Double price, String category) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.description = description;
         this.price = price;
+        this.category = category;
+
     }
 
 

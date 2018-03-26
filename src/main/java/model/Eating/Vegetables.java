@@ -13,8 +13,8 @@ public class Vegetables extends Goods {
         dateTerm = new DateTerm();
     }
 
-    public Vegetables(int id, String name, int quantity, String description, Double price, DateTerm dateTerm, String sort) {
-        super(id, name, quantity, description, price);
+    public Vegetables(int id, String name, int quantity, String description, Double price, String category, DateTerm dateTerm, String sort) {
+        super(id, name, quantity, description, price, category);
         this.dateTerm = dateTerm;
         this.sort = sort;
     }

@@ -12,8 +12,8 @@ public class Sweets extends Goods {
         dateTerm = new DateTerm();
     }
 
-    public Sweets(int id, String name, int quantity, String description, Double price, DateTerm dateTerm) {
-        super(id, name, quantity, description, price);
+    public Sweets(int id, String name, int quantity, String description, Double price, String category, DateTerm dateTerm) {
+        super(id, name, quantity, description, price, category);
         this.dateTerm = dateTerm;
     }
 

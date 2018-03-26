@@ -12,8 +12,9 @@ public class Cellphone extends Technics {
     public Cellphone() {
     }
 
-    public Cellphone(int id, String name, int quantity, String description, Double price, int guarantee, RAM ramSpecific, CPU cpuSpecific, String OS, Double diagonal, int timeWork) {
-        super(id, name, quantity, description, price, guarantee, ramSpecific, cpuSpecific);
+    public Cellphone(int id, String name, int quantity, String description, Double price, String category,
+                     int guarantee, RAM ramSpecific, CPU cpuSpecific, String OS, Double diagonal, int timeWork) {
+        super(id, name, quantity, description, price, category, guarantee, ramSpecific, cpuSpecific);
         this.OS = CellOperationSystem.valueOf(OS);
         this.diagonal = diagonal;
         this.timeWork = timeWork;

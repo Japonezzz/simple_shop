@@ -9,8 +9,8 @@ public class Computer extends Technics {
     public Computer() {
     }
 
-    public Computer(int id, String name, int quantity, String description, Double price, int guarantee, RAM ramSpecific, CPU cpuSpecific, CPU gpuProc, RAM gpuRAM) {
-        super(id, name, quantity, description, price, guarantee, ramSpecific, cpuSpecific);   //тут заповняються поля, унаслідувані від батьківського класу
+    public Computer(int id, String name, int quantity, String description, Double price, String category, int guarantee, RAM ramSpecific, CPU cpuSpecific, CPU gpuProc, RAM gpuRAM) {
+        super(id, name, quantity, description, price, category, guarantee, ramSpecific, cpuSpecific);   //тут заповняються поля, унаслідувані від батьківського класу
         this.gpuProc = gpuProc;
         this.gpuRAM = gpuRAM;
     }

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import model.Clothes;
 import model.DateTerm;
 import model.Eating.SweetDrinks;
@@ -64,10 +65,10 @@ public class FXML_Shop_Controller implements Initializable{
     }
 
     @FXML
-    void OnMouseClickLV_category(javafx.scene.input.MouseEvent event) {
+    void OnMouseClickLV_category(MouseEvent event) {
         founded = new ArrayList<Goods>();
         Integer selected = lv_category.getSelectionModel().getSelectedIndex();
-
+        String local_category = "";
     switch (selected)
     {
         case(0):
@@ -78,63 +79,45 @@ public class FXML_Shop_Controller implements Initializable{
 
         case(1):
         {
-            for (Goods a:goods) {
-                if(a instanceof Computer);
-                founded.add(a);
-            }
+            local_category = "computer";
             break;
         }
 
         case(2):
         {
-                for (Goods a:goods) {
-                    if(a instanceof Cellphone);
-                    founded.add(a);
-                }
+            local_category = "cellphone";
             break;
         }
 
         case(3):
             {
-                    for (Goods a:goods) {
-                        if(a instanceof Clothes);
-                        founded.add(a);
-                    }
+                local_category = "clothes";
                 break;
             }
         case(4):
         {
-                for (Goods a:goods) {
-                    if(a instanceof Vegetables);
-                    founded.add(a);
-                }
+            local_category = "vegetables";
             break;
         }
         case(5):
         {
-                for (Goods a:goods) {
-                    if(a instanceof Water);
-                    founded.add(a);
-                }
+            local_category = "water";
             break;
         }
         case(6):
         {
-                for (Goods a:goods) {
-                    if(a instanceof SweetDrinks);
-                    founded.add(a);
-                }
+            local_category = "sweetdrinks";
             break;
         }
         case(7):
         {
-                for (Goods a:goods) {
-                    if(a instanceof Sweets);
-                    founded.add(a);
-                }
+            local_category = "sweets";
             break;
         }
     }
+    for(Goods a : goods)
+        if(a.getCategory() == local_category)
+            founded.add(a);
     FillingListView(founded);
 }
 
@@ -189,26 +172,27 @@ public class FXML_Shop_Controller implements Initializable{
     private void InitGoods(){
         //StoreController store = new StoreController();
         goods = new ArrayList();
-        goods.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1));
-        goods.add( new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400,
+        goods.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1, "water"));
+        goods.add( new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400, "cellphone",
                 12, new RAM(12, "DDR5"), new CPU(5, 1.2),
                 "IOS", 5.2, 10));
-        goods.add(new Computer(2, "DELL", 15, "Famous NoteBook in the world", (double)800, 12,
+        goods.add(new Computer(2, "DELL", 15, "Famous NoteBook in the world", (double)800, "computer", 12,
                 new RAM(12, "DDR5"), new CPU(5, 7.2),
                 new CPU(2, 5.0), new RAM(4, "DDR4")));
-        goods.add(new SweetDrinks(4, "Dobra Voda z limonom", 10, "Voda z krana", (double)1,
+        goods.add(new SweetDrinks(4, "Dobra Voda z limonom", 10, "Voda z krana", (double)1, "sweetdrinks",
                 new DateTerm(new Date(2018,01,20), (double)27,
                         12)));
-        goods.add( new Sweets(5, "Kartoha", 10, "Mnogo kroxmalia", (double)1,
+        goods.add( new Sweets(5, "Romashka", 10, "Mnogo kroxmalia", (double)1, "sweets",
                 new DateTerm(new Date(2018,03,20), (double)22,
                         2)));
-        goods.add(new Vegetables(6, "Romashka", 10, "Vkusno", (double)1,
+        goods.add(new Vegetables(6, "Kartoha", 10, "Vkusno", (double)1, "vegetables",
                 new DateTerm(new Date(2018,03,20), (double)15,
                         4), "best of the best"));
-        goods.add(new Clothes(7, "Krosovki", 10, "Kloviu brend", (double)1,
+        goods.add(new Clothes(7, "Krosovki", 10, "Kloviu brend", (double)1,"clothes",
                 new Date(2018, 02, 20), "Adibas",
                 2000, 20));
 
+        StoreController control = new StoreController(goods);
         FillingListView(goods);
 
     }

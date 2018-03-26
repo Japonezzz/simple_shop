@@ -13,8 +13,8 @@ public class Clothes extends Goods {
     public Clothes() {                  //клас за замовчуванням
     }
 
-    public Clothes(int id, String name, int quantity, String description, Double price, Date dateCreation, String nameBrend, int countWorkers, int countCountry) {
-        super(id, name, quantity, description, price);
+    public Clothes(int id, String name, int quantity, String description, Double price, String category, Date dateCreation, String nameBrend, int countWorkers, int countCountry) {
+        super(id, name, quantity, description, price, category);
         this.dateCreation = dateCreation;
         this.nameBrend = nameBrend;
         this.countWorkers = countWorkers;
