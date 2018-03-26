@@ -14,20 +14,20 @@ import model.Technics.RAM;
 import java.util.ArrayList;
 
 public class StoreController {
-    private static ArrayList<Goods> goods;                              // our goods
-    private static Double money;                                       //store wallet
+    private static ArrayList<Goods> goods;
+    private static Double money;
 
-    public StoreController() {                                          //no parameters constructor (initialization)
+    public StoreController() {
         this.goods = new ArrayList<Goods>();
         money = 0.0;
   }
 
-    public StoreController(ArrayList<Goods> goods) {                    //constructor with Arraylist of goods
+    public StoreController(ArrayList<Goods> goods) {
         this.goods = goods;
         money = 0.0;
     }
 
-                                                                            //getters and setters of lists of goods
+
 
 
     public static ArrayList<Goods> getGoods() {
@@ -49,11 +49,11 @@ public class StoreController {
 
     /**
      * Method for searching good by it's name in Store's List
-      * @param goods List of our goods in the Store
-     * @param to_find String that user enter ti find a good
-     * @return ArrayList of goods which names consists entered by user letters
+      * @param goods List of all our goods in the Store
+     * @param to_find String that user enters to find a good
+     * @return ArrayList of goods which names consists entered letters
      */
-    public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
+        public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
         {
 
         ArrayList<Goods> founded = new ArrayList<Goods>();       //founded products list
@@ -79,8 +79,10 @@ public class StoreController {
         }
 
     /**
-     * Method needed for Supply method - it adds quantity of good if 
-     * @param good
+     * Method needed for Supply method - it adds quantity of supplied good to its quantity in the store
+     * if there is no such good_id in DB it would add it automatically
+     * It returns nothing, just making procedures
+     * @param good any good
      */
         private static void for_supply(Goods good)
         {
@@ -98,6 +100,15 @@ public class StoreController {
             }
         }
 
+    /**
+     * Method needed for Sale method - it decrease quantity of good in store for quantity of sold product
+     * and increases shops wallet on sum of sold products
+     *
+     * @param good
+     * @return if not enough quantity of product we want to sell negative string
+     * @return  If the good was not founded in store DB negative string
+     * @return  If sell was successful positive string
+     */
         private static String for_sale(Goods good)
         {
         Boolean flag = false;
@@ -125,20 +136,26 @@ public class StoreController {
         return "Sell was successful";
     }
 
-                                                                        //Supply function
-        public static String Supply (Goods good)                        //returns string
+    /**
+     *  Method makes supply of any good in our store
+      * @param good Any good of our store
+     * @return String 1) If good is null it returns negative string
+     * String 2) If good's category is not null it returns positive string
+     * String 3) In other cases it returns negative string with error text
+     */
+        public static String Supply (Goods good)
         {
             if (good==null) {
                 System.out.println("Nothing was supplied");
-                return "Nothing was supplied";                                          //if taken good is null returns negative string
+                return "Nothing was supplied";
             }
-           else if(good.getCategory()!= null)                                            //if taken good is a Computer
+           else if(good.getCategory()!= null)
             {
                 for_supply(good);
                 System.out.println("Good was added successfully");
                 return "Good was added successfully";
             }
-            else {                                                                          // returns empty string if good type wasn't founded on store
+            else {
               System.out.println("Wrong kind of good");
               return "";
           }
@@ -147,8 +164,14 @@ public class StoreController {
 
         }
 
-                                                                        //Goods Sales function
-        public static String Sale (Goods good)                          //returns string
+    /**
+     * Method makes direct sale of products
+      * @param good any good of our store
+     * @return if good is null it will be negative string
+     * @return if product's category is not null it will be positive string
+     * @return if such kind of good was not founded returns negative string with error text
+     */
+        public static String Sale (Goods good)
         {
 
             if (good==null)
