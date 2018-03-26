@@ -2,15 +2,17 @@ package model;
 
 import java.util.Date;
 
-public class DateTerm {
-    private Date dateCreating;
-    private Double temperatureSave;
-    private int termSave;
+//клас для запису терміну придатності продуктів
 
-    public DateTerm() {
+public class DateTerm {
+    private Date dateCreating;              //поле для дати вироблення продукту
+    private Double temperatureSave;         //поле для запису температури зберігання
+    private int termSave;                   //поле для запису терміну придатності у місяцях
+
+    public DateTerm() {                     //конструктор за замовчуванням
     }
 
-    public DateTerm(Date dateCreating, Double temperatureSave, int termSave) {
+    public DateTerm(Date dateCreating, Double temperatureSave, int termSave) {      //конструктор з параметрами
         this.dateCreating = dateCreating;
         this.temperatureSave = temperatureSave;
         this.termSave = termSave;

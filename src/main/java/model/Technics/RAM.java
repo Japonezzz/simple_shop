@@ -5,9 +5,11 @@ import enums.MemoryType;
 import java.util.ArrayList;
 import java.util.List;
 
+//клас для опису оперативної пам'яті пристрою
+
 public class RAM {
-    private int volume;
-    private MemoryType ramType;
+    private int volume;                                 //поле для зазначення обсягу оперативної пам'яті пристрою
+    private MemoryType ramType;                         //поле для вказання типу оперативної пам'яті. Вик-ся перечислення MemoryType
 
     public RAM() {
 
@@ -35,7 +37,7 @@ public class RAM {
     }
 
     @Override
-    public String toString() {
+    public String toString() {                                      //перегрузка метода toString()
         return "\n\tVolume of memory: " + this.volume +
                 "\n\tMemoryType: " + this.ramType.toString();
     }

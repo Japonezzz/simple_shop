@@ -2,6 +2,8 @@ package model.Technics;
 
 import enums.CellOperationSystem;
 
+//клас мобільних телефонів з переліку технічних товарів. Насліує клас Technics
+
 public class Cellphone extends Technics {
     private CellOperationSystem OS;
     private Double diagonal;
@@ -43,10 +45,10 @@ public class Cellphone extends Technics {
 
     public void Show() {
         System.out.println(this);
-    }
+    }                               //метод виводу на екран полів об'єкта
 
     @Override
-    public String toString() {
+    public String toString() {                                                     //перегрузка метода toString()
         return "Name: " + this.getName() +
                 "\nQuantity: " + this.getQuantity() +
                 "\nDescription: " + this.getDescription() +

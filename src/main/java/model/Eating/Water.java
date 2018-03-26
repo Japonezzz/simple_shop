@@ -2,6 +2,8 @@ package model.Eating;
 
 import model.Goods;
 
+//клас питної води з переліку продуктів
+
 public class Water extends Goods {
 
     public  Water() {
@@ -13,10 +15,10 @@ public class Water extends Goods {
 
     public void Show() {
         System.out.println(this);
-    }
+    }                           //метод виводу на екран полів об'єкта
 
     @Override
-    public String toString() {
+    public String toString() {                                                  //перегрузка метода toString()
         return "Name: " + this.getName() +
                 "\nQuantity: " + this.getQuantity() +
                 "\nDescription: " + this.getDescription() +

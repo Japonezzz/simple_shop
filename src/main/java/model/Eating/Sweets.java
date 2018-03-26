@@ -3,8 +3,10 @@ package model.Eating;
 import model.DateTerm;
 import model.Goods;
 
+//клас солодощів з переліку харчових товарів
+
 public class Sweets extends Goods {
-    private DateTerm dateTerm;
+    private DateTerm dateTerm;                                  //поле для запису терміну придатності
 
     public Sweets() {
         dateTerm = new DateTerm();
@@ -25,10 +27,10 @@ public class Sweets extends Goods {
 
     public void Show() {
         System.out.println(this);
-    }
+    }                               //метод виводу на екран полів об'єкта
 
     @Override
-    public String toString() {
+    public String toString() {                                                          //перегрузка метода toString()
         return "Name: " + this.getName() +
                 "\nQuantity: " + this.getQuantity() +
                 "\nDescription: " + this.getDescription() +

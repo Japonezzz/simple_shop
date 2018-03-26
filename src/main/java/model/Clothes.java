@@ -1,14 +1,16 @@
 package model;
 
+//проміжний клас для опису предметів одягу. Похідних від абстрактного класу товарів - Goods
+
 import java.util.Date;
 
 public class Clothes extends Goods {
-    private Date dateCreation;
-    private String nameBrend;
-    private int countWorkers;
-    private int countCountry;
+    private Date dateCreation;          //поле для запису дати виготовлення товару
+    private String nameBrend;           //поле для запису назви бренду
+    private int countWorkers;           //поле для запису кількості працівників фірми-виробника
+    private int countCountry;           //поле для запису кількості країн, в яких продається бренд
 
-    public Clothes() {
+    public Clothes() {                  //клас за замовчуванням
     }
 
     public Clothes(int id, String name, int quantity, String description, Double price, Date dateCreation, String nameBrend, int countWorkers, int countCountry) {
@@ -51,12 +53,12 @@ public class Clothes extends Goods {
         this.countCountry = countCountry;
     }
 
-    public void Show() {
+    public void Show() {                                                        //метод виводу на екран полів об'єкта
         System.out.println(this);
     }
 
     @Override
-    public String toString() {
+    public String toString() {                                                  //перегрузка метода toString()
         return "Name: " + this.getName() +
                 "\nQuantity: " + this.getQuantity() +
                 "\nDescription: " + this.getDescription() +

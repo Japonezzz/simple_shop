@@ -1,13 +1,15 @@
 package model;
 
+//абстрактний клас товарів. Містить п'ять полів, обов'язкових для будь-якого товару
+
 public abstract class Goods {
 
     //fields
-    private int id;
-    private String name;
-    private int quantity;
-    private String description;
-    private Double price;
+    private int id;                 //поле ID товару
+    private String name;            //поле назви товару
+    private int quantity;           //поле кількості одиниць товару на складі
+    private String description;     //поле опису товару
+    private Double price;           //поле ціни за одиницю товару
 
     //constructors
     public Goods() {
@@ -68,5 +70,5 @@ public abstract class Goods {
     }
 
     // abstract methods
-    public abstract void Show();
+    public abstract void Show();                                //абстрактний метод виводу на екран полів
 }

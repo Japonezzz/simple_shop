@@ -1,8 +1,10 @@
 package model.Technics;
 
+//клас для опису центрального процесора пристрою - CPU
+
 public class CPU {
-    private int cores;
-    private Double frequency;
+    private int cores;                              //поле для запису кількості ядер процесора
+    private Double frequency;                       //поле для запису робочої частоти процесора
 
     public CPU() {
     }
@@ -28,7 +30,7 @@ public class CPU {
         this.frequency = frequency;
     }
 
-    @Override
+    @Override                                                   //перегрузка методу toString()
     public String toString() {
         return  "\n\tCores count: " + this.cores +
                 "\n\tFrequency: " + this.frequency + "GHz";
