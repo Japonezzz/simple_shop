@@ -58,14 +58,6 @@ public class FXML_Shop_Controller implements Initializable{
     private JFXListView<String> lv_category;
 
     @FXML
-    void OnEnterPressed(KeyEvent event) {
-        if(event.getCode()== KeyCode.ENTER)
-        {
-            OnActionB_search(new ActionEvent());
-        }
-    }
-
-    @FXML
     void OnActionB_tosecondary(ActionEvent event) {
 
     }
@@ -73,6 +65,14 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     void OnActionFld_search(ActionEvent event) {
 
+    }
+
+    @FXML
+    void OnEnterPressed(KeyEvent event) {
+        if(event.getCode()== KeyCode.ENTER)
+        {
+            OnActionB_search(new ActionEvent());
+        }
     }
 
     @FXML
