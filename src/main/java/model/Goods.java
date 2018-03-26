@@ -2,6 +2,8 @@ package model;
 
 //абстрактний клас товарів. Містить п'ять полів, обов'язкових для будь-якого товару
 
+import enums.CategoryType;
+
 public abstract class Goods {
 
     //fields
@@ -10,18 +12,10 @@ public abstract class Goods {
     private int quantity;           //поле кількості одиниць товару на складі
     private String description;     //поле опису товару
     private Double price;           //поле ціни за одиницю товару
-    private String category;        //pole kategorii
+    private CategoryType category;        //pole kategorii
 
     //constructors
     public Goods() {
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public Goods(int id, String name, int quantity, String description, Double price, String category) {
@@ -30,12 +24,18 @@ public abstract class Goods {
         this.quantity = quantity;
         this.description = description;
         this.price = price;
-        this.category = category;
-
+        this.category = CategoryType.valueOf(category);
     }
 
-
     //get set methodos for fields
+    public CategoryType getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = CategoryType.valueOf(category);
+    }
+
     public int getId() {
         return id;
     }
