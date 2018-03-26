@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import model.Clothes;
 import model.DateTerm;
@@ -53,6 +55,14 @@ public class FXML_Shop_Controller implements Initializable{
 
     @FXML
     private JFXListView<String> lv_category;
+
+    @FXML
+    void OnEnterPressed(KeyEvent event) {
+        if(event.getCode()== KeyCode.ENTER)
+        {
+            OnActionB_search(new ActionEvent());
+        }
+    }
 
     @FXML
     void OnActionB_tosecondary(ActionEvent event) {
