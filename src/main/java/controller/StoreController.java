@@ -62,7 +62,7 @@ public class StoreController {
 
 
         for (Goods g : goods) {
-            if (g.getName().contains(to_find))
+            if (g.getName().toLowerCase().contains(to_find.toLowerCase()))
                 founded.add(g);                                         //adding founded by name goods to list
         }
             if(founded != null)
