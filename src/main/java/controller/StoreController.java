@@ -43,25 +43,25 @@ public class StoreController {
         public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
         {
 
-        ArrayList<Goods> founded = new ArrayList<Goods>();       //founded products list
+        ArrayList<Goods> founded = new ArrayList<Goods>();
 
         if (to_find == "") {
-            System.out.print("Search string is empty");             //returns null if search string was empty
+            System.out.print("Search string is empty");
             return null;
         }
 
 
         for (Goods g : goods) {
             if (g.getName().toLowerCase().contains(to_find.toLowerCase()))
-                founded.add(g);                                         //adding founded by name goods to list
+                founded.add(g);
         }
             if(founded != null)
             {
-                return founded;                                         //returns list of founded goods
+                return founded;
             }
             else {
                 System.out.print("Nothing of values was found");
-                return null;                                                //returns null if nothing found
+                return null;
             }
         }
 
@@ -101,25 +101,25 @@ public class StoreController {
         Boolean flag = false;
         for (Goods ph: goods)
         {
-            if(ph.getId() == good.getId())                       //if it was founded on store's Cellphone list
+            if(ph.getId() == good.getId())
             {
-                if (good.getQuantity() > ph.getQuantity())        //if quantity of that kind of Cellphones is not enough to sell
+                if (good.getQuantity() > ph.getQuantity())
                 {
                     System.out.println("We don't have such quantity in our store");
                     return "We don't have such quantity in our store";
                 } else {
-                    ph.setQuantity(ph.getQuantity() - good.getQuantity());              //reduce the quantity of this kind of Cellphone on store
-                    money += ph.getPrice() * good.getQuantity();                        //take payment on our storeWallet
+                    ph.setQuantity(ph.getQuantity() - good.getQuantity());
+                    money += ph.getPrice() * good.getQuantity();
                 }
                 flag = true;
                 break;
             }
         }
         if(flag==false) {
-            System.out.println("The good was not found in DB");                     //if good was not founded on our store
+            System.out.println("The good was not found in DB");
             return "The good was not found in DB";
         }
-        System.out.println("Sell was successful");                                    //if transaction took place - returns positive string
+        System.out.println("Sell was successful");
         return "Sell was successful";
     }
 
@@ -147,8 +147,6 @@ public class StoreController {
               return "";
           }
 
-                                            //if good or quantity was added returns positive string
-
         }
 
     /**
@@ -164,16 +162,16 @@ public class StoreController {
             if (good==null)
             {
                 System.out.println("You have nothing to sale");
-                return "You have nothing to sale";                      //if good is null returns negative string
+                return "You have nothing to sale";
             }
 
-           else if(good.getCategory()!= null)                               //if taken good is Cellphone
+           else if(good.getCategory()!= null)
             {
                for_sale(good);
             }
 
             else {
-                System.out.println("Wrong kind of good");                                   //if kind of good wasn't founded in store
+                System.out.println("Wrong kind of good");
                 return "Wrong kind of good";
             }
             return "";
