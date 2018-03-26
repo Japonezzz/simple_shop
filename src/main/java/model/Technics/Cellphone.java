@@ -48,17 +48,17 @@ public class Cellphone extends Technics {
         System.out.println(this);
     }                               //метод виводу на екран полів об'єкта
 
-    @Override
-    public String toString() {                                                     //перегрузка метода toString()
-        return "Name: " + this.getName() +
-                "\nQuantity: " + this.getQuantity() +
-                "\nDescription: " + this.getDescription() +
-                "\nPrice: " + this.getPrice() + " $" +
-                "\nGuarantee: " + this.getGuarantee() + " month" +
-                "\nRAM information:" + this.getRamSpecific() +
-                "\nCPU information:" + this.getCpuSpecific() +
-                "\nOperation System: " + this.getOS() +
-                "\nDiagonal: " + this.getDiagonal() +
-                "\nBattery life: " + this.getTimeWork();
-    }
+    //@Override
+//    public String toString() {                                                     //перегрузка метода toString()
+//        return "Name: " + this.getName() +
+//                "\nQuantity: " + this.getQuantity() +
+//                "\nDescription: " + this.getDescription() +
+//                "\nPrice: " + this.getPrice() + " $" +
+//                "\nGuarantee: " + this.getGuarantee() + " month" +
+//                "\nRAM information:" + this.getRamSpecific() +
+//                "\nCPU information:" + this.getCpuSpecific() +
+//                "\nOperation System: " + this.getOS() +
+//                "\nDiagonal: " + this.getDiagonal() +
+//                "\nBattery life: " + this.getTimeWork();
+//    }
 }

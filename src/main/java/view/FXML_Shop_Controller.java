@@ -37,7 +37,7 @@ public class FXML_Shop_Controller implements Initializable{
     ArrayList<Goods> founded;
 
     @FXML
-    private JFXListView<String> lv_info;
+    private JFXListView<Goods> lv_info;
 
     @FXML
     private JFXButton b_tosecondary;
@@ -74,7 +74,6 @@ public class FXML_Shop_Controller implements Initializable{
             OnActionB_search(new ActionEvent());
         }
     }
-
     @FXML
     void OnMouseClickLV_category(MouseEvent event) {
         founded = new ArrayList<Goods>();
@@ -144,7 +143,7 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     void OnActionRB_up(ActionEvent event) {
 
-        ArrayList<Goods> increase = goods;
+        ObservableList<Goods> increase = lv_info.getItems();
         Collections.sort(increase, new Comparator<Goods>(){
             public int compare(Goods o1, Goods o2){
                 if(o1.getPrice() == o2.getPrice())
@@ -152,7 +151,7 @@ public class FXML_Shop_Controller implements Initializable{
                 return o1.getPrice() > o2.getPrice() ? -1 : 1;
             }
         });
-        FillingListView(increase);
+        lv_info.setItems(increase);
     }
 
     @FXML
@@ -208,11 +207,7 @@ public class FXML_Shop_Controller implements Initializable{
 
     }
     private void FillingListView(ArrayList<Goods> Items){
-        ArrayList<String> names = new ArrayList();
-        for (Goods S:Items) {
-            names.add(S.GetListItem());
-        }
-        ObservableList<String> goodsCollection = FXCollections.observableArrayList(names);
+        ObservableList<Goods> goodsCollection = FXCollections.observableArrayList(Items);
         lv_info.setItems(goodsCollection);
     }
 }

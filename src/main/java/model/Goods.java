@@ -77,7 +77,12 @@ public abstract class Goods {
     }
 
     public String GetListItem(){
-        return this.name + " \t" + this.price + "$";
+        return this.name + "\t" + this.price + "$";
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "Category: " + category + " Price: " + price;
     }
 
     // abstract methods
