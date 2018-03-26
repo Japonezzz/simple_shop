@@ -3,7 +3,7 @@ package model.Technics;
 import model.Goods;
 
 public abstract class Technics extends Goods {
-    private int guarantee;
+    private int guarantee; // поле для гарантії (місяці)
     private RAM ramSpecific;
     private CPU cpuSpecific;
 
