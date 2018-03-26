@@ -156,7 +156,7 @@ public class FXML_Shop_Controller implements Initializable{
 
     @FXML
     void OnActionRB_down(ActionEvent event) {
-        ArrayList<Goods> decrease = goods;
+        ObservableList<Goods> decrease = lv_info.getItems();
         Collections.sort(decrease, new Comparator<Goods>(){
             public int compare(Goods o1, Goods o2){
                 if(o1.getPrice() == o2.getPrice())
@@ -164,7 +164,7 @@ public class FXML_Shop_Controller implements Initializable{
                 return o1.getPrice() < o2.getPrice() ? -1 : 1;
             }
         });
-        FillingListView(decrease);
+        lv_info.setItems(decrease);
     }
 
     public void initialize(URL location, ResourceBundle resources) {

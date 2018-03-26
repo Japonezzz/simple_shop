@@ -82,7 +82,7 @@ public abstract class Goods {
 
     @Override
     public String toString() {
-        return "Name: " + name + "Category: " + category + " Price: " + price;
+        return "Name: " + name + "\tCategory: " + category + "\tPrice: " + price;
     }
 
     // abstract methods

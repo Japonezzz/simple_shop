@@ -34,17 +34,4 @@ public class Computer extends Technics {
     public void Show() {
         System.out.println(this);
     }                               //метод виводу на екран полів об'єкта
-
-//    @Override
-//    public String toString() {                                                     //перегрузка метода toString()
-//        return "Name: " + this.getName() +
-//                "\nQuantity: " + this.getQuantity() +
-//                "\nDescription: " + this.getDescription() +
-//                "\nPrice: " + this.getPrice() + " $" +
-//                "\nGuarantee: " + this.getGuarantee() + " month" +
-//                "\nRAM information:" + this.getRamSpecific() +
-//                "\nCPU information:" + this.getCpuSpecific() +
-//                "\nGPU RAM information: " + this.getGpuRAM() +
-//                "\nGPU CPU information: " + this.getGpuProc();
-//    }
 }

@@ -38,16 +38,4 @@ public class Vegetables extends Goods {
     public void Show() {
         System.out.println(this);
     }                       //метод виводу на екран полів об'єкта
-
-//    @Override
-//    public String toString() {                                              //перегрузка метода toString()
-//        return "Name: " + this.getName() +
-//                "\nQuantity: " + this.getQuantity() +
-//                "\nDescription: " + this.getDescription() +
-//                "\nPrice: " + this.getPrice() + " $" +
-//                "\nCreation date: " + this.getDateTerm().getDateCreating() +
-//                "\nTemperature save: " + this.getDateTerm().getTemperatureSave() +
-//                "\nTerm save: " + this.getDateTerm().getTermSave() + " month" +
-//                "\nSort: " + this.getSort();
-//    }
 }
