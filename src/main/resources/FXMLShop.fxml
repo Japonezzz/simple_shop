@@ -23,7 +23,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="btn_goods" layoutX="14.0" layoutY="14.0" onAction="#OnActionBtn_goods" prefHeight="37.0" prefWidth="203.0" style="-fx-border-color: #000000;" text="Перейти на форму товарів">
+                  <JFXButton fx:id="b_tosecondary" layoutX="14.0" layoutY="14.0" onAction="#OnActionB_tosecondary" prefHeight="37.0" prefWidth="203.0" style="-fx-border-color: #000000;" text="Перейти на форму товарів">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

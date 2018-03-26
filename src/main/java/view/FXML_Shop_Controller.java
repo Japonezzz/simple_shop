@@ -36,7 +36,7 @@ public class FXML_Shop_Controller implements Initializable{
     private JFXListView<String> lv_info;
 
     @FXML
-    private JFXButton btn_goods;
+    private JFXButton b_tosecondary;
 
     @FXML
     private JFXTextField fld_search;
@@ -54,7 +54,7 @@ public class FXML_Shop_Controller implements Initializable{
     private JFXListView<String> lv_category;
 
     @FXML
-    void OnActionBtn_goods(ActionEvent event) {
+    void OnActionB_tosecondary(ActionEvent event) {
 
     }
 
