@@ -3,9 +3,9 @@ package model.Technics;
 import model.Goods;
 
 public abstract class Technics extends Goods {
-    private int guarantee; // поле для гарантії (місяці)
-    private RAM ramSpecific;
-    private CPU cpuSpecific;
+    private int guarantee;                      // поле для гарантії (місяці)
+    private RAM ramSpecific;                    // поле типу оперативної пам'яті (DDR1, DDR2 чи інше)
+    private CPU cpuSpecific;                    // поле характеристик центрального процесора
 
     public Technics() {
     }
