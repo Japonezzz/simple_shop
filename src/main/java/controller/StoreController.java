@@ -1,15 +1,6 @@
 package controller;
 
-import javafx.scene.control.Cell;
-import model.*;
-import model.Eating.SweetDrinks;
-import model.Eating.Sweets;
-import model.Eating.Vegetables;
-import model.Eating.Water;
-import model.Technics.Cellphone;
-import model.Technics.Computer;
-import model.Technics.CPU;
-import model.Technics.RAM;
+import model.Goods;
 
 import java.util.ArrayList;
 
@@ -26,10 +17,6 @@ public class StoreController {
         this.goods = goods;
         money = 0.0;
     }
-
-
-
-
     public static ArrayList<Goods> getGoods() {
         return goods;
     }
