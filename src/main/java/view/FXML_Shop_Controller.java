@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import controller.StoreController;
+import enums.CategoryType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -78,7 +79,7 @@ public class FXML_Shop_Controller implements Initializable{
     void OnMouseClickLV_category(MouseEvent event) {
         founded = new ArrayList<Goods>();
         Integer selected = lv_category.getSelectionModel().getSelectedIndex();
-        String local_category = "";
+        CategoryType local_category = CategoryType.All;
     switch (selected)
     {
         case(0):
@@ -89,39 +90,39 @@ public class FXML_Shop_Controller implements Initializable{
 
         case(1):
         {
-            local_category = "computer";
+            local_category = CategoryType.Computer;
             break;
         }
 
         case(2):
         {
-            local_category = "cellphone";
+            local_category = CategoryType.CellPhone;
             break;
         }
 
         case(3):
             {
-                local_category = "clothes";
+                local_category = CategoryType.Clothes;
                 break;
             }
         case(4):
         {
-            local_category = "vegetables";
+            local_category = CategoryType.Vegetables;
             break;
         }
         case(5):
         {
-            local_category = "water";
+            local_category = CategoryType.Water;
             break;
         }
         case(6):
         {
-            local_category = "sweetdrinks";
+            local_category = CategoryType.SweetDrinks;
             break;
         }
         case(7):
         {
-            local_category = "sweets";
+            local_category = CategoryType.Sweets;
             break;
         }
     }
@@ -182,23 +183,23 @@ public class FXML_Shop_Controller implements Initializable{
     private void InitGoods(){
         //StoreController store = new StoreController();
         goods = new ArrayList();
-        goods.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1, "water"));
-        goods.add( new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400, "cellphone",
+        goods.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1, "Water"));
+        goods.add( new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400, "CellPhone",
                 12, new RAM(12, "DDR5"), new CPU(5, 1.2),
                 "IOS", 5.2, 10));
-        goods.add(new Computer(2, "DELL", 15, "Famous NoteBook in the world", (double)800, "computer", 12,
+        goods.add(new Computer(2, "DELL", 15, "Famous NoteBook in the world", (double)800, "Computer", 12,
                 new RAM(12, "DDR5"), new CPU(5, 7.2),
                 new CPU(2, 5.0), new RAM(4, "DDR4")));
-        goods.add(new SweetDrinks(4, "Dobra Voda z limonom", 10, "Voda z krana", (double)1, "sweetdrinks",
+        goods.add(new SweetDrinks(4, "Dobra Voda z limonom", 10, "Voda z krana", (double)1, "SweetDrinks",
                 new DateTerm(new Date(2018,01,20), (double)27,
                         12)));
-        goods.add( new Sweets(5, "Romashka", 10, "Mnogo kroxmalia", (double)1, "sweets",
+        goods.add( new Sweets(5, "Romashka", 10, "Mnogo kroxmalia", (double)1, "Sweets",
                 new DateTerm(new Date(2018,03,20), (double)22,
                         2)));
-        goods.add(new Vegetables(6, "Kartoha", 10, "Vkusno", (double)1, "vegetables",
+        goods.add(new Vegetables(6, "Kartoha", 10, "Vkusno", (double)1, "Vegetables",
                 new DateTerm(new Date(2018,03,20), (double)15,
                         4), "best of the best"));
-        goods.add(new Clothes(7, "Krosovki", 10, "Kloviu brend", (double)1,"clothes",
+        goods.add(new Clothes(7, "Krosovki", 10, "Kloviu brend", (double)1,"Clothes",
                 new Date(2018, 02, 20), "Adibas",
                 2000, 20));
 
@@ -214,12 +215,4 @@ public class FXML_Shop_Controller implements Initializable{
         ObservableList<String> goodsCollection = FXCollections.observableArrayList(names);
         lv_info.setItems(goodsCollection);
     }
-
-
 }
-/*  TreeItem<Student> root = new RecursiveTreeItem<Student>(student, RecursiveTreeObject::getChildren);
-    JFXTreeTableView<Student> table = new JFXTreeTableView<>();
-    table.getColumns().setAll(studentUOB, studentName, emailAddress, studentYear, personalContact, dept);
-    table.setRoot(root);
-    table.setShowRoot(false);
-    */

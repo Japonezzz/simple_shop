@@ -126,7 +126,7 @@ public class StoreController {
                 System.out.println("Nothing was supplied");
                 return "Nothing was supplied";                                          //if taken good is null returns negative string
             }
-           else if(good.getCategory()!= "")                                            //if taken good is a Computer
+           else if(good.getCategory()!= null)                                            //if taken good is a Computer
             {
                 for_supply(good);
                 System.out.println("Good was added successfully");
@@ -151,7 +151,7 @@ public class StoreController {
                 return "You have nothing to sale";                      //if good is null returns negative string
             }
 
-           else if(good.getCategory()!="")                               //if taken good is Cellphone
+           else if(good.getCategory()!= null)                               //if taken good is Cellphone
             {
                for_sale(good);
             }
