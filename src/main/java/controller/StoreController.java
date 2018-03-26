@@ -17,12 +17,12 @@ public class StoreController {
     private static ArrayList<Goods> goods;                              // our goods
     private static Double money;                                       //store wallet
 
-    public StoreController() {
+    public StoreController() {                                          //no parameters constructor (initialization)
         this.goods = new ArrayList<Goods>();
         money = 0.0;
-  }                                        //no parameters constructor
+  }
 
-    public StoreController(ArrayList<Goods> goods) {
+    public StoreController(ArrayList<Goods> goods) {                    //constructor with Arraylist of goods
         this.goods = goods;
         money = 0.0;
     }
@@ -47,10 +47,13 @@ public class StoreController {
     }
 
 
-
-                                                                        //search goods by name (string) function
-                                                                        //returns list of founded goods
-        public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
+    /**
+     * Method for searching good by it's name in Store's List
+      * @param goods List of our goods in the Store
+     * @param to_find String that user enter ti find a good
+     * @return ArrayList of goods which names consists entered by user letters
+     */
+    public static ArrayList<Goods> Search_in_category(ArrayList<Goods> goods, String to_find)
         {
 
         ArrayList<Goods> founded = new ArrayList<Goods>();       //founded products list
@@ -75,7 +78,10 @@ public class StoreController {
             }
         }
 
-
+    /**
+     * Method needed for Supply method - it adds quantity of good if 
+     * @param good
+     */
         private static void for_supply(Goods good)
         {
             Boolean flag = false;
