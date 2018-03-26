@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Clothes;
+import model.DataInfo;
 import model.DateTerm;
 import model.Eating.SweetDrinks;
 import model.Eating.Sweets;
@@ -41,6 +42,18 @@ public class FXML_Shop_Controller implements Initializable{
 
     ArrayList<Goods> goods;
     ArrayList<Goods> founded;
+
+    @FXML
+    private JFXButton delete_button;
+
+    @FXML
+    void On_Action_Delete(ActionEvent event) {
+        Integer selected = lv_info.getSelectionModel().getSelectedIndex();
+        DataInfo di = new DataInfo();
+        di.setGoods(goods);
+        di.removeGood(selected);
+        FillingListView(di.getGoods());
+    }
 
     @FXML
     private JFXListView<Goods> lv_info;

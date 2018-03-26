@@ -31,12 +31,15 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField fx:id="fld_search" alignment="CENTER" layoutX="33.0" layoutY="96.0" maxWidth="497.0" minWidth="240.0" onAction="#OnActionFld_search" onKeyPressed="#OnEnterPressed" prefHeight="31.0" prefWidth="497.0" promptText="Пошук" />
-                  <JFXButton fx:id="b_search" layoutX="530.0" layoutY="90.0" onAction="#OnActionB_search" prefHeight="44.0" prefWidth="118.0" style="-fx-border-color: #000000; -fx-background-color: #ffff80;" text="Пошук" textAlignment="CENTER">
+                  <JFXTextField fx:id="fld_search" alignment="CENTER" layoutX="7.0" layoutY="119.0" maxWidth="497.0" minWidth="240.0" onAction="#OnActionFld_search" onKeyPressed="#OnEnterPressed" prefHeight="31.0" prefWidth="497.0" promptText="Пошук" />
+                  <JFXButton fx:id="b_search" layoutX="531.0" layoutY="113.0" onAction="#OnActionB_search" prefHeight="44.0" prefWidth="118.0" style="-fx-border-color: #000000; -fx-background-color: #ffff80;" text="Пошук" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
+                  <JFXButton layoutX="35.0" layoutY="79.0" />
+                  <JFXButton layoutX="165.0" layoutY="79.0" />
+                  <JFXButton fx:id="delete_button" layoutX="328.0" layoutY="67.0" onAction="#On_Action_Delete" prefHeight="37.0" prefWidth="118.0" text="Delete" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">

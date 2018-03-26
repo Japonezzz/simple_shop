@@ -34,6 +34,10 @@ public class DataInfo {
         goods.add(good);
     }
 
+    public void removeGood(int index) {
+        goods.remove(index);
+    }
+
     public ArrayList<Goods> getGoods() {
         return goods;
     }
