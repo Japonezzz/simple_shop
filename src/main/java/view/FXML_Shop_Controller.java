@@ -68,7 +68,6 @@ public class FXML_Shop_Controller implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("/FXMLGoods.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("My New Stage Title");
         stage.setScene(scene);
         stage.show();
         ((Node)(event.getSource())).getScene().getWindow().hide();

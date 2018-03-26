@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:controller="view.FXML_Goods_Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="876.0" minWidth="10.0" prefWidth="876.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="433.0" minWidth="0.0" prefWidth="0.0" />
@@ -20,7 +21,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <JFXButton fx:id="b_tomain" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="203.0" style="-fx-border-color: #000000;" text="Перейти на головну форму" />
+            <JFXButton fx:id="b_tomain" layoutX="14.0" layoutY="14.0" onAction="#GoToMainForm" prefHeight="37.0" prefWidth="203.0" style="-fx-border-color: #000000;" text="Перейти на головну форму" />
             <JFXButton fx:id="b_goods" layoutX="281.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Товари" />
             <JFXButton fx:id="b_supply" layoutX="433.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Поставки" />
          </children>
