@@ -6,7 +6,7 @@ import model.Goods;
 //клас солодощів з переліку харчових товарів
 
 public class Sweets extends Goods {
-    private DateTerm dateTerm;                                  //поле для запису терміну придатності
+    private DateTerm dateTerm;                                  // поле для запису терміну придатності
 
     public Sweets() {
         dateTerm = new DateTerm();
