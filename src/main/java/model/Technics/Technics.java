@@ -2,12 +2,10 @@ package model.Technics;
 
 import model.Goods;
 
-//абстрактний клас для товарів технічного напрямку. Наслідується від абстрактного клсу Goods(товари)
-
 public abstract class Technics extends Goods {
-    private int guarantee;                                              //поле гарантійного терміну в місяцях
-    private RAM ramSpecific;                                            //поле для запису обсягу ОЗУ. У поле записуються об'єкти класу RAM(оперативної пам'яті)
-    private CPU cpuSpecific;                                            //поле для запису частоти центрального процесеора пристрою. У поле записуються об'єкти класу CPU(центрального процесора)
+    private int guarantee;                      // поле для гарантії (місяці)
+    private RAM ramSpecific;                    // поле типу оперативної пам'яті (DDR1, DDR2 чи інше)
+    private CPU cpuSpecific;                    // поле характеристик центрального процесора
 
     public Technics() {
     }
