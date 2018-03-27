@@ -45,19 +45,34 @@ public class FXML_Shop_Controller implements Initializable{
 
     public ArrayList<Goods> goods;
     ArrayList<Goods> founded;
+    Goods new_good;
 
     @FXML
     private JFXButton add_button;
 
+
     @FXML
     void OnAddButtonPressed(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXMLAdd.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getResource("/FXMLAdd.fxml"));
+
+
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Добавлення товару");
+
+        FXML_ADD_Controller controller =
+                loader.<FXML_ADD_Controller>getController();
+
+
         stage.show();
         ((Node)(event.getSource())).getScene().getWindow().hide();
+        DataInfo info = new DataInfo(goods);
+        goods = info.getGoods();
+        FillingListView(goods);
+
     }
 
     @FXML

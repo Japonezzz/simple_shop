@@ -33,11 +33,12 @@ import model.Technics.RAM;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class FXML_ADD_Controller implements Initializable {
 
-    ArrayList<Goods> goods;
+     static Goods g;
     private int count = 100;
 
     @FXML
@@ -59,9 +60,6 @@ public class FXML_ADD_Controller implements Initializable {
     @FXML
     private JFXTextField field_ccount;
 
-
-    @FXML
-    private AnchorPane main_pain;
 
     @FXML
     private JFXTextField field_ram2;
@@ -190,7 +188,7 @@ public class FXML_ADD_Controller implements Initializable {
     }
 
     @FXML
-    void onAction_Button_OK(ActionEvent event) throws Exception{
+     void onAction_Button_OK(ActionEvent event) throws Exception{
 
         Integer advisor = combo_categories.getSelectionModel().getSelectedIndex();
         switch (advisor)
@@ -210,12 +208,11 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    Goods g = new Computer(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                    g = new Computer(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.Computer.toString(), Integer.valueOf(field_gurantee.getText()),
                             new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getText()), new CPU(Integer.valueOf(field_cpu.getText()),
                             Double.valueOf(field_cpu2.getText())), new CPU(Integer.valueOf(field_cpugp.getText()), Double.valueOf(field_cpugp2.getText())),
                             new RAM(Integer.valueOf(field_ramgp.getText()), field_ramgp2.getText()));
-                    goods.add(g);
                 }
                 break;
             }
@@ -234,13 +231,12 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    Goods g = new Cellphone(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                    g = new Cellphone(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.CellPhone.toString(), Integer.valueOf(field_gurantee.getText()),
                             new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getText()), new CPU(Integer.valueOf(field_cpu.getText()),
                             Double.valueOf(field_cpu2.getText())), field_os.getText(), Double.valueOf(field_diagonal.getText()),
                             Integer.valueOf(field_timework.getText()));
 
-                    goods.add(g);
                 }
                 break;
             }
@@ -248,7 +244,7 @@ public class FXML_ADD_Controller implements Initializable {
             case 2:
             {
                 if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        || field_brend.getText()=="" || field_creationdate.getValue()==null || field_wcount.getText()=="" || field_ccount.getText() =="")
+                        || field_brend.getText()=="" || field_wcount.getText()=="" || field_ccount.getText() =="")
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
@@ -258,12 +254,10 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    Goods g = new Clothes(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
-                            Double.valueOf(field_price.getText()), CategoryType.Clothes.toString(), formatter.parse(field_creationdate.getEditor().getText()),
+                    g = new Clothes(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                            Double.valueOf(field_price.getText()), CategoryType.Clothes.toString(), new Date(2018,03,20),
                             field_brend.getText(), Integer.valueOf(field_wcount.getText()), Integer.valueOf(field_ccount.getText())) ;
 
-                    goods.add(g);
                 }
                 break;
             }
@@ -271,7 +265,7 @@ public class FXML_ADD_Controller implements Initializable {
             case 3:
             {
                 if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        || field_sort.getText() == "" || field_dateterm.getValue()==null)
+                        || field_sort.getText() == "")
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
@@ -281,12 +275,10 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    Goods g = new Vegetables(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                    g = new Vegetables(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.Vegetables.toString(),
-                            new DateTerm( formatter.parse(field_creationdate.getEditor().getText()), (double)15, 4), field_sort.getText());
+                            new DateTerm( new Date(2018,03,20), (double)15, 4), field_sort.getText());
 
-                    goods.add(g);
                 }
                 break;
             }
@@ -303,18 +295,16 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    Goods g = new Water(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                    g = new Water(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.Water.toString());
 
-                    goods.add(g);
                 }
                 break;
             }
 
             case 5:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        ||field_dateterm.getValue() == null)
+                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == "")
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
@@ -324,20 +314,17 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    Goods g = new SweetDrinks(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                    g = new SweetDrinks(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.SweetDrinks.toString(),
-                            new DateTerm( formatter.parse(field_creationdate.getEditor().getText()), (double)15, 4));
+                            new DateTerm( new Date(2018,03,20), (double)15, 4));
 
-                    goods.add(g);
                 }
                 break;
             }
 
             case 6:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        ||field_dateterm.getValue() == null)
+                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == "")
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
@@ -347,16 +334,10 @@ public class FXML_ADD_Controller implements Initializable {
                 }
                 else
                 {
-                    System.out.println(field_creationdate.getValue());
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                   // formatter.parse(date);
-                    //System.out.println(date);
 
-//                    Goods g = new SweetDrinks(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
-//                            Double.valueOf(field_price.getText()), CategoryType.SweetDrinks.toString(),
-//                            new DateTerm(formatter.parse(date)), (double)15, 4));
-
-//                    goods.add(g);
+                    g = new SweetDrinks(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
+                           Double.valueOf(field_price.getText()), CategoryType.SweetDrinks.toString(),
+                           new DateTerm(new Date(2018,03,20), (double)15, 4));
                 }
                 break;
             }
@@ -366,6 +347,15 @@ public class FXML_ADD_Controller implements Initializable {
         alert.setContentText("Good successfully added");
         alert.setHeaderText(null);
         alert.showAndWait();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/FXMLShop.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Magazine");
+        stage.setScene(scene);
+        stage.show();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+
     }
 
     @FXML
@@ -731,9 +721,10 @@ public class FXML_ADD_Controller implements Initializable {
         ObservableList<String> items = FXCollections.observableArrayList (
                 "PC", "Смартфони", "Одяг", "Овочі", "Вода", "Солодка вода", "Солодощі");
         combo_categories.setItems(items);
+    }
 
-        DataInfo dataInfo = new DataInfo();
-        dataInfo.InitTestData();
-        goods = dataInfo.getGoods();
+    public Goods send()
+    {
+        return g;
     }
 }
