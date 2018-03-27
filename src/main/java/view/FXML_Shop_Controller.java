@@ -7,6 +7,8 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import controller.StoreController;
 import enums.CategoryType;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -44,6 +47,20 @@ public class FXML_Shop_Controller implements Initializable{
     ArrayList<Goods> founded;
 
     @FXML
+    private JFXButton add_button;
+
+    @FXML
+    void OnAddButtonPressed(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/FXMLAdd.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Добавлення товару");
+        stage.show();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
     private JFXButton delete_button;
 
     @FXML
@@ -56,16 +73,25 @@ public class FXML_Shop_Controller implements Initializable{
     }
 
     @FXML
+    private JFXButton MoreInfoButton;
+
+    @FXML
+    void On_Action_MoreInfo(ActionEvent event) {
+
+    }
+
+
+    @FXML
     private JFXListView<Goods> lv_info;
 
     @FXML
     private JFXButton b_tosecondary;
 
-    @FXML
-    private JFXTextField fld_search;
+//    @FXML
+//    private JFXTextField fld_search;
 
-    @FXML
-    private JFXButton b_search;
+//    @FXML
+//    private JFXButton b_search;
 
     @FXML
     private JFXRadioButton rb_down;
@@ -81,23 +107,24 @@ public class FXML_Shop_Controller implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("/FXMLGoods.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        stage.setTitle("Tовари");
         stage.setScene(scene);
         stage.show();
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
-    @FXML
-    void OnActionFld_search(ActionEvent event) {
+//    @FXML
+//    void OnActionFld_search(ActionEvent event) {
+//
+//    }
 
-    }
-
-    @FXML
-    void OnEnterPressed(KeyEvent event) {
-        if(event.getCode()== KeyCode.ENTER)
-        {
-            OnActionB_search(new ActionEvent());
-        }
-    }
+//    @FXML
+//    void OnEnterPressed(KeyEvent event) {
+//        if(event.getCode()== KeyCode.ENTER)
+//        {
+//            OnActionB_search(new ActionEvent());
+//        }
+//    }
     @FXML
     void OnMouseClickLV_category(MouseEvent event) {
         founded = new ArrayList<Goods>();
@@ -156,13 +183,13 @@ public class FXML_Shop_Controller implements Initializable{
 }
 
 
-    @FXML
-    void OnActionB_search(ActionEvent event) {
-        founded =  StoreController.Search_in_category(goods,fld_search.getText());
-
-        FillingListView(founded);
-
-    }
+//    @FXML
+//    void OnActionB_search(ActionEvent event) {
+//        founded =  StoreController.Search_in_category(goods,fld_search.getText());
+//
+//        FillingListView(founded);
+//
+//    }
 
     @FXML
     void OnActionRB_up(ActionEvent event) {

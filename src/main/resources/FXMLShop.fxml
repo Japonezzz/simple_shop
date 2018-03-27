@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -31,15 +30,19 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField fx:id="fld_search" alignment="CENTER" layoutX="7.0" layoutY="119.0" maxWidth="497.0" minWidth="240.0" onAction="#OnActionFld_search" onKeyPressed="#OnEnterPressed" prefHeight="31.0" prefWidth="497.0" promptText="Пошук" />
-                  <JFXButton fx:id="b_search" layoutX="531.0" layoutY="113.0" onAction="#OnActionB_search" prefHeight="44.0" prefWidth="118.0" style="-fx-border-color: #000000; -fx-background-color: #ffff80;" text="Пошук" textAlignment="CENTER">
+                  <JFXButton fx:id="add_button" buttonType="RAISED" layoutX="29.0" layoutY="92.0" onAction="#OnAddButtonPressed" prefHeight="37.0" prefWidth="135.0" style="-fx-background-color: #e6ffe6;" text="Додати">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="delete_button" buttonType="RAISED" layoutX="203.0" layoutY="92.0" onAction="#On_Action_Delete" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #ffeee6;" text="Видалити">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="MoreInfoButton" buttonType="RAISED" layoutX="380.0" layoutY="92.0" onAction="#On_Action_MoreInfo" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #e6eeff;" text="Детальнiше">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="35.0" layoutY="79.0" />
-                  <JFXButton layoutX="165.0" layoutY="79.0" />
-                  <JFXButton fx:id="delete_button" layoutX="328.0" layoutY="67.0" onAction="#On_Action_Delete" prefHeight="37.0" prefWidth="118.0" text="Delete" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">

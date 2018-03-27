@@ -34,7 +34,7 @@ public class FXML_Goods_Controller implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("/FXMLShop.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("My New Stage Title");
+        stage.setTitle("Magazine");
         stage.setScene(scene);
         stage.show();
         ((Node)(event.getSource())).getScene().getWindow().hide();

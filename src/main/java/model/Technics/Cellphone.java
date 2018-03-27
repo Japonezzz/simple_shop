@@ -1,6 +1,9 @@
 package model.Technics;
 
+import enums.CategoryType;
 import enums.CellOperationSystem;
+
+import java.util.ArrayList;
 
 //клас мобільних телефонів з переліку технічних товарів. Насліує клас Technics
 
