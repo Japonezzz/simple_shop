@@ -43,7 +43,7 @@ import java.util.*;
 
 public class FXML_Shop_Controller implements Initializable{
 
-    ArrayList<Goods> goods;
+    public ArrayList<Goods> goods;
     ArrayList<Goods> founded;
 
     @FXML
@@ -77,6 +77,7 @@ public class FXML_Shop_Controller implements Initializable{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setContentText("You didn't chosen the good");
+            alert.setHeaderText(null);
             alert.showAndWait();
         }
     }
