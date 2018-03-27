@@ -66,10 +66,19 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     void On_Action_Delete(ActionEvent event) {
         Integer selected = lv_info.getSelectionModel().getSelectedIndex();
-        DataInfo di = new DataInfo();
-        di.setGoods(goods);
-        di.removeGood(selected);
-        FillingListView(di.getGoods());
+        if(!(lv_info.getSelectionModel().isEmpty())) {
+            DataInfo di = new DataInfo();
+            di.setGoods(goods);
+            di.removeGood(selected);
+            FillingListView(di.getGoods());
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("You didn't chosen the good");
+            alert.showAndWait();
+        }
     }
 
     @FXML
