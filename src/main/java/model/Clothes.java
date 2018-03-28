@@ -54,7 +54,7 @@ public class Clothes extends Goods {
     }
 
     public void Show() {                                                        //метод виводу на екран полів об'єкта
-        System.out.println(this);
+        System.out.println(DetailsInformation());
     }
 
     @Override

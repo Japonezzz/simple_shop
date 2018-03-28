@@ -26,7 +26,7 @@ public class SweetDrinks extends Goods {
     }
 
     public void Show() {
-        System.out.println(this);
+        System.out.println(DetailsInformation());
     }               //метод виводу на екран полів об'єкта
 
     @Override
