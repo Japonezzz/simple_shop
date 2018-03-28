@@ -14,38 +14,62 @@ import model.Technics.RAM;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Клас, що зберігає у ArrayList список товарів
+ * тобто фактично заміняє базу даних
+ * @author
+ * @version
+ */
+
 public class DataInfo {
 
+    /** @param goods список товарів */
     private ArrayList<Goods> goods;
 
+    /** Конструктор за замовчуванням
+     * ініціалізує поле {@link DataInfo#goods}
+     * @see DataInfo
+     * */
     public DataInfo() {
         goods = TestData();
     }
 
+    /** Конструктор з параметром приймає @param goods
+     * ініціалізує поле {@link DataInfo#goods}
+     * @see DataInfo
+     * */
     public DataInfo(ArrayList<Goods> goods) {
         this.goods = goods;
     }
 
+    /** присвоює полю goods масив товарів, який
+     * повертає метод TestData
+     * */
     public void InitTestData() {
         goods = TestData();
     }
 
+    /** @param good додає до списку товарів новий товар */
     public void addGood(Goods good) {
         goods.add(good);
     }
 
+    /** @param index видаляє товар зі списку за індексом */
     public void removeGood(int index) {
         goods.remove(index);
     }
 
+    /** @return goods повертає список товарів */
     public ArrayList<Goods> getGoods() {
         return goods;
     }
 
+    /** @param goods приймає і встановлює список товарів */
     public void setGoods(ArrayList<Goods> goods) {
         this.goods = goods;
     }
 
+    /** @return test метод створює тестовий список товарів */
     private ArrayList<Goods> TestData(){
         ArrayList<Goods> test = new ArrayList<Goods>();
         test.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1, "Water"));
@@ -69,6 +93,7 @@ public class DataInfo {
         return test;
     }
 
+    /** @return categories встановлює і повертає список категорій */
     public static ObservableList<String> getCategories() {
         ObservableList<String> categories = FXCollections.observableArrayList("Усі категорії", "PC", "Смартфони", "Одяг", "Овочі", "Вода", "Солодка вода", "Солодощі");
         return categories;
