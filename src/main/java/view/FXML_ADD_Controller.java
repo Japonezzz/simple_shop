@@ -38,7 +38,7 @@ import java.util.ResourceBundle;
 
 public class FXML_ADD_Controller implements Initializable {
 
-     static Goods g;
+    static Goods g;
     private int count = 100;
 
     @FXML

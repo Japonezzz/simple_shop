@@ -36,6 +36,19 @@ public class Vegetables extends Goods {
     }
 
     public void Show() {
-        System.out.println(this);
+        System.out.println(DetailsInformation());
     }                       //метод виводу на екран полів об'єкта
+
+    @Override
+    public String DetailsInformation() {
+        return "Назва товару: " + getName() +
+                "\nКатегорія товару: " + getCategory() +
+                "\nКількість товару: " + getQuantity() +
+                "\nСорт: " + getSort() +
+                "\nОпис товару: " + getDescription() +
+                "\nЦіна товару: " + getPrice() + "$" +
+                "\nДата виготовлення товару: " + dateTerm.getDateCreating() +
+                "\nТемпература зберігання: " + dateTerm.getTemperatureSave() +
+                "\nТермін придатності(у місяцях): " + dateTerm.getTermSave();
+    }
 }

@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableView;
 import controller.StoreController;
 import enums.CategoryType;
 import javafx.beans.property.ListProperty;
@@ -91,7 +90,7 @@ public class FXML_Shop_Controller implements Initializable{
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
-            alert.setContentText("You didn't chosen the good");
+            alert.setContentText("You didn't chosen the good !");
             alert.setHeaderText(null);
             alert.showAndWait();
         }
@@ -103,6 +102,22 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     void On_Action_MoreInfo(ActionEvent event) {
 
+        Integer selected = lv_info.getSelectionModel().getSelectedIndex();
+        if(!(lv_info.getSelectionModel().isEmpty())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setContentText(goods.get(selected).DetailsInformation());
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Виберіть будь-ласка товар !");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
     }
 
 

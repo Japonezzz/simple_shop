@@ -14,6 +14,15 @@ public class Water extends Goods {
     }
 
     public void Show() {
-        System.out.println(this);
+        System.out.println(DetailsInformation());
     }                           //метод виводу на екран полів об'єкта
+
+    @Override
+    public String DetailsInformation() {
+        return "Назва товару: " + getName() +
+                "\nКатегорія товару: " + getCategory() +
+                "\nКількість товару: " + getQuantity() +
+                "\nОпис товару: " + getDescription() +
+                "\nЦіна товару: " + getPrice() + "$";
+    }
 }

@@ -56,4 +56,16 @@ public class Clothes extends Goods {
     public void Show() {                                                        //метод виводу на екран полів об'єкта
         System.out.println(this);
     }
+
+    @Override
+    public String DetailsInformation() {
+        return "Назва товару: " + getName() +
+                "\nКатегорія товару: " + getCategory() +
+                "\nКількість товару: " + getQuantity() +
+                "\nОпис товару: " + getDescription() +
+                "\nЦіна товару: " + getPrice() + "$" +
+                "\nБренд: " + getNameBrend() +
+                "\nК-сть працівників: " + getCountWorkers() +
+                "\nК-сть країн-працівників: " + getCountCountry();
+    }
 }
