@@ -10,13 +10,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import model.Goods;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class FXML_Goods_Controller implements Initializable{
 
 
+    ArrayList<Goods> goods;
     @FXML
     private TableView<?> tv_supply;
 
@@ -41,6 +44,5 @@ public class FXML_Goods_Controller implements Initializable{
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

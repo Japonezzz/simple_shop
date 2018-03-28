@@ -266,9 +266,7 @@ public class FXML_Shop_Controller implements Initializable{
         InitGoods();
     }
     private void InitCategory(){
-        ObservableList<String> items = FXCollections.observableArrayList (
-                "Усі категорії", "PC", "Смартфони", "Одяг", "Овочі", "Вода", "Солодка вода", "Солодощі");
-        lv_category.setItems(items);
+        lv_category.setItems(DataInfo.getCategories());
     }
     private void InitGoods(){
         DataInfo dataInfo = new DataInfo();
