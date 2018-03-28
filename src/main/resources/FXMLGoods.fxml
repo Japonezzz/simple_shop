@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML_Goods_Controller">
+<GridPane fx:id="main_grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXML_Goods_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="876.0" minWidth="10.0" prefWidth="876.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="433.0" minWidth="0.0" prefWidth="0.0" />
@@ -22,8 +23,10 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <JFXButton fx:id="b_tomain" layoutX="14.0" layoutY="14.0" onAction="#GoToMainForm" prefHeight="37.0" prefWidth="203.0" style="-fx-border-color: #000000;" text="Перейти на головну форму" />
-            <JFXButton fx:id="b_goods" layoutX="281.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Товари" />
-            <JFXButton fx:id="b_supply" layoutX="433.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Поставки" />
+            <JFXButton fx:id="b_goods" layoutX="225.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Товари" />
+            <JFXButton fx:id="b_supply" layoutX="352.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Поставки" />
+            <JFXButton fx:id="b_search" layoutX="749.0" layoutY="43.0" onAction="#OnActionB_search" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Search" />
+            <JFXTextField fx:id="fld_search" layoutX="505.0" layoutY="41.0" maxWidth="235.0" minWidth="235.0" prefHeight="31.0" prefWidth="235.0" promptText="nazva" />
          </children>
       </AnchorPane>
       <TableView fx:id="tv_supply" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">

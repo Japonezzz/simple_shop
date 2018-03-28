@@ -33,13 +33,15 @@ import model.Technics.RAM;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class FXML_ADD_Controller implements Initializable {
+public class FXML_ADD_Controller implements Initializable{
+
 
     static Goods g;
-    private int count = 100;
+    private int count = 0;
 
     @FXML
     private DatePicker field_creationdate;
@@ -175,36 +177,50 @@ public class FXML_ADD_Controller implements Initializable {
     @FXML
     private Label label_creationdate;
 
+    @FXML
+    private AnchorPane main_pain;
+
 
     @FXML
     void OnAction_Button_Cancel(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXMLShop.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
+
+        Parent root = fxmlLoader.load();
+        FXML_Shop_Controller cont = fxmlLoader.getController();
+
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Magazine");
+        Stage stage = (Stage)main_pain.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
      void onAction_Button_OK(ActionEvent event) throws Exception{
 
         Integer advisor = combo_categories.getSelectionModel().getSelectedIndex();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
+        Parent root1 = loader.load();
+        FXML_Shop_Controller control = loader.getController();
+        ArrayList<Goods> goods = control.getGoods();
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        for (Goods g: goods) {
+            ids.add(g.getId());
+        }
+
+        count = Collections.max(ids);
+
+
         switch (advisor)
         {
             case 0:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        || field_gurantee.getText()=="" || field_ram.getText()=="" || field_ram2.getText()=="" || field_cpu.getText() ==""
-                        || field_cpu2.getText()=="" || field_cpugp.getText()=="" || field_cpugp2.getText()=="" || field_ramgp.getText()==""
-                        || field_ramgp2.getText()=="")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0
+                        || field_gurantee.getText().length()==0 || field_ram.getText().length()==0 || field_ram2.getText().length()==0 || field_cpu.getText().length()==0
+                        || field_cpu2.getText().length()==0 || field_cpugp.getText().length()==0 || field_cpugp2.getText().length()==0 || field_ramgp.getText().length()==0
+                        || field_ramgp2.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                    negative();
                 }
                 else
                 {
@@ -213,21 +229,19 @@ public class FXML_ADD_Controller implements Initializable {
                             new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getText()), new CPU(Integer.valueOf(field_cpu.getText()),
                             Double.valueOf(field_cpu2.getText())), new CPU(Integer.valueOf(field_cpugp.getText()), Double.valueOf(field_cpugp2.getText())),
                             new RAM(Integer.valueOf(field_ramgp.getText()), field_ramgp2.getText()));
+
+                   positive();
                 }
                 break;
             }
 
             case 1:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        || field_gurantee.getText()=="" || field_ram.getText()=="" || field_ram2.getText()=="" || field_cpu.getText() ==""
-                        || field_cpu2.getText()=="" || field_diagonal.getText()=="" || field_os.getText()=="" || field_timework.getText()=="")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0
+                        || field_gurantee.getText().length()==0 || field_ram.getText().length()==0 || field_ram2.getText().length()==0 || field_cpu.getText().length()==0
+                        || field_cpu2.getText().length()==0|| field_diagonal.getText().length()==0 || field_os.getText().length()==0 || field_timework.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                   negative();
                 }
                 else
                 {
@@ -237,20 +251,18 @@ public class FXML_ADD_Controller implements Initializable {
                             Double.valueOf(field_cpu2.getText())), field_os.getText(), Double.valueOf(field_diagonal.getText()),
                             Integer.valueOf(field_timework.getText()));
 
+                  positive();
+
                 }
                 break;
             }
 
             case 2:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        || field_brend.getText()=="" || field_wcount.getText()=="" || field_ccount.getText() =="")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0
+                        || field_brend.getText().length()==0 || field_wcount.getText().length()==0 || field_ccount.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                    negative();
                 }
                 else
                 {
@@ -258,20 +270,18 @@ public class FXML_ADD_Controller implements Initializable {
                             Double.valueOf(field_price.getText()), CategoryType.Clothes.toString(), new Date(2018,03,20),
                             field_brend.getText(), Integer.valueOf(field_wcount.getText()), Integer.valueOf(field_ccount.getText())) ;
 
+                    positive();
+
                 }
                 break;
             }
 
             case 3:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == ""
-                        || field_sort.getText() == "")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0
+                        || field_sort.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                    negative();
                 }
                 else
                 {
@@ -279,24 +289,24 @@ public class FXML_ADD_Controller implements Initializable {
                             Double.valueOf(field_price.getText()), CategoryType.Vegetables.toString(),
                             new DateTerm( new Date(2018,03,20), (double)15, 4), field_sort.getText());
 
+                    positive();
+
                 }
                 break;
             }
 
             case 4:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == "")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                    negative();
                 }
                 else
                 {
                     g = new Water(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.Water.toString());
+
+                    positive();
 
                 }
                 break;
@@ -304,13 +314,9 @@ public class FXML_ADD_Controller implements Initializable {
 
             case 5:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == "")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                   negative();
                 }
                 else
                 {
@@ -318,19 +324,17 @@ public class FXML_ADD_Controller implements Initializable {
                             Double.valueOf(field_price.getText()), CategoryType.SweetDrinks.toString(),
                             new DateTerm( new Date(2018,03,20), (double)15, 4));
 
+                 positive();
+
                 }
                 break;
             }
 
             case 6:
             {
-                if(field_name.getText()=="" || field_quantity.getText() == "" || field_desc.getText() == "" || field_price.getText() == "")
+                if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0)
                 {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setContentText("You didn't enter all data");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
+                   negative();
                 }
                 else
                 {
@@ -338,23 +342,23 @@ public class FXML_ADD_Controller implements Initializable {
                     g = new SweetDrinks(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                            Double.valueOf(field_price.getText()), CategoryType.SweetDrinks.toString(),
                            new DateTerm(new Date(2018,03,20), (double)15, 4));
+
+                    positive();
                 }
                 break;
             }
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setContentText("Good successfully added");
-        alert.setHeaderText(null);
-        alert.showAndWait();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/FXMLShop.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
+
+        Parent root = fxmlLoader.load();
+        FXML_Shop_Controller cont = fxmlLoader.getController();
+        cont.addd(g);
+
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Magazine");
+        Stage stage = (Stage)main_pain.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
 
     }
 
@@ -725,6 +729,24 @@ public class FXML_ADD_Controller implements Initializable {
 
     public Goods send()
     {
-        return g;
+        return this.g;
+    }
+
+    private void positive()
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setContentText("Good successfully added");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+
+    private void negative()
+    {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setContentText("You didn't enter all data");
+        alert.setHeaderText(null);
+        alert.showAndWait();
     }
 }

@@ -22,6 +22,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Clothes;
 import model.DataInfo;
@@ -42,36 +43,39 @@ import java.util.*;
 
 public class FXML_Shop_Controller implements Initializable{
 
-    public ArrayList<Goods> goods;
     ArrayList<Goods> founded;
-    Goods new_good;
+    DataInfo dataInfo;
 
     @FXML
     private JFXButton add_button;
 
+    @FXML
+    private AnchorPane main_pain;
+
 
     @FXML
     void OnAddButtonPressed(ActionEvent event) throws Exception {
+        FXML_ADD_Controller cont = new FXML_ADD_Controller();
         FXMLLoader loader = new FXMLLoader();
+        loader.setController(cont);
+
         Parent root = loader.load(getClass().getResource("/FXMLAdd.fxml"));
 
-
-
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        Stage stage = (Stage)main_pain.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Добавлення товару");
-
-        FXML_ADD_Controller controller =
-                loader.<FXML_ADD_Controller>getController();
-
-
         stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-        DataInfo info = new DataInfo(goods);
-        goods = info.getGoods();
-        FillingListView(goods);
+    }
 
+    public void addd(Goods g)
+    {
+        dataInfo.addGood(g);
+        FillingListView(dataInfo.getGoods());
+    }
+
+    public ArrayList<Goods> getGoods()
+    {
+        return this.dataInfo.getGoods();
     }
 
     @FXML
@@ -81,10 +85,9 @@ public class FXML_Shop_Controller implements Initializable{
     void On_Action_Delete(ActionEvent event) {
         Integer selected = lv_info.getSelectionModel().getSelectedIndex();
         if(!(lv_info.getSelectionModel().isEmpty())) {
-            DataInfo di = new DataInfo();
-            di.setGoods(goods);
-            di.removeGood(selected);
-            FillingListView(di.getGoods());
+            dataInfo.setGoods(dataInfo.getGoods());
+            dataInfo.removeGood(selected);
+            FillingListView(dataInfo.getGoods());
         }
         else
         {
@@ -106,7 +109,7 @@ public class FXML_Shop_Controller implements Initializable{
         if(!(lv_info.getSelectionModel().isEmpty())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setContentText(goods.get(selected).DetailsInformation());
+            alert.setContentText(dataInfo.getGoods().get(selected).DetailsInformation());
             alert.setHeaderText(null);
             alert.showAndWait();
         }
@@ -127,11 +130,7 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     private JFXButton b_tosecondary;
 
-//    @FXML
-//    private JFXTextField fld_search;
 
-//    @FXML
-//    private JFXButton b_search;
 
     @FXML
     private JFXRadioButton rb_down;
@@ -153,18 +152,7 @@ public class FXML_Shop_Controller implements Initializable{
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
-//    @FXML
-//    void OnActionFld_search(ActionEvent event) {
-//
-//    }
 
-//    @FXML
-//    void OnEnterPressed(KeyEvent event) {
-//        if(event.getCode()== KeyCode.ENTER)
-//        {
-//            OnActionB_search(new ActionEvent());
-//        }
-//    }
     @FXML
     void OnMouseClickLV_category(MouseEvent event) {
         founded = new ArrayList<Goods>();
@@ -174,7 +162,7 @@ public class FXML_Shop_Controller implements Initializable{
     {
         case(0):
             {
-            founded.addAll(goods);
+            founded.addAll(dataInfo.getGoods());
             break;
         }
 
@@ -216,7 +204,7 @@ public class FXML_Shop_Controller implements Initializable{
             break;
         }
     }
-    for(Goods a : goods)
+    for(Goods a : dataInfo.getGoods())
         if(a.getCategory() == local_category)
             founded.add(a);
     FillingListView(founded);
@@ -269,13 +257,13 @@ public class FXML_Shop_Controller implements Initializable{
         lv_category.setItems(DataInfo.getCategories());
     }
     private void InitGoods(){
-        DataInfo dataInfo = new DataInfo();
-        dataInfo.InitTestData();
-        goods = dataInfo.getGoods();
-        FillingListView(goods);
+        dataInfo = new DataInfo();
+        FillingListView(dataInfo.getGoods());
     }
     private void FillingListView(ArrayList<Goods> Items){
         ObservableList<Goods> goodsCollection = FXCollections.observableArrayList(Items);
         lv_info.setItems(goodsCollection);
     }
+
+
 }

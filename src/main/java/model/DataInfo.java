@@ -19,7 +19,7 @@ public class DataInfo {
     private ArrayList<Goods> goods;
 
     public DataInfo() {
-        goods = new ArrayList<Goods>();
+        goods = TestData();
     }
 
     public DataInfo(ArrayList<Goods> goods) {
