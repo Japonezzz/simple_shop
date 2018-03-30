@@ -41,13 +41,18 @@ public class FXMLUsers_Controller implements Initializable {
     private SubscriptionManager subs;
     @FXML
     User onAction_btn_add_user(ActionEvent event) {
-                int id = Integer.parseInt(text_id.getText());
-                String name = text_name.getText();
-                String email = text_email.getText();
-                Date date_of_reg = new Date();
-                boolean shouldsend = check_shouldsend.isSelected();
-                User adding = new User(id,name,email,date_of_reg,shouldsend);
-                return adding;
+        if(text_id.getText()!=""&&text_name.getText()!=""&&text_email.getText()!="") {
+            int id = Integer.parseInt(text_id.getText());
+            String name = text_name.getText();
+            String email = text_email.getText();
+            Date date_of_reg = new Date();
+            boolean shouldsend = check_shouldsend.isSelected();
+
+            User adding = new User(id, name, email, date_of_reg, shouldsend);
+            return adding;
+        }
+        else
+            return null;
 
         //if(isValodationEmail(text_email.getText()))
             //subs.addUser(new User(text_name.getText(),text_email.getText(),date.getTime(),check_shouldsend.getBo));
