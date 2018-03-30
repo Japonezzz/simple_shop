@@ -56,8 +56,5 @@ public class User {
         this.dateOfRegistration = dateOfRegistration;
         this.shouldsend = shouldsend;
     }
-    public User(){
-
-    }
 
 }

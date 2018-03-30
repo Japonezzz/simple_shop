@@ -13,7 +13,4 @@ public class SubscriptionManager {
     public void addUser(User user){
         subscriptionUsers.add(user);
     }
-    public void main(){
-        System.out.println(1);
-    }
 }
