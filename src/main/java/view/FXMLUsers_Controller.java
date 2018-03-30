@@ -41,14 +41,14 @@ public class FXMLUsers_Controller implements Initializable {
     private SubscriptionManager subs;
     @FXML
     User onAction_btn_add_user(ActionEvent event) {
-        if(text_id.getText()!=""&&text_name.getText()!=""&&text_email.getText()!="") {
+        if(text_id.getText()!=null | text_name.getText()!=null | text_email.getText() != null|text_id.getText().matches("\\d+")) {
             int id = Integer.parseInt(text_id.getText());
             String name = text_name.getText();
             String email = text_email.getText();
             Date date_of_reg = new Date();
             boolean shouldsend = check_shouldsend.isSelected();
-
             User adding = new User(id, name, email, date_of_reg, shouldsend);
+            System.out.println(adding.getId());
             return adding;
         }
         else
