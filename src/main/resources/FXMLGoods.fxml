@@ -26,13 +26,14 @@
             <JFXButton fx:id="b_goods" layoutX="225.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Товари" />
             <JFXButton fx:id="b_supply" layoutX="352.0" layoutY="43.0" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Поставки" />
             <JFXButton fx:id="b_search" layoutX="749.0" layoutY="43.0" onAction="#OnActionB_search" prefHeight="25.0" prefWidth="113.0" style="-fx-border-color: #000000;" text="Search" />
-            <JFXTextField fx:id="fld_search" layoutX="505.0" layoutY="41.0" maxWidth="235.0" minWidth="235.0" prefHeight="31.0" prefWidth="235.0" promptText="nazva" />
+            <JFXTextField fx:id="fld_search" layoutX="505.0" layoutY="41.0" maxWidth="235.0" minWidth="235.0" onKeyPressed="#On_Enter_pressed" prefHeight="31.0" prefWidth="235.0" promptText="nazva" />
          </children>
       </AnchorPane>
       <TableView fx:id="tv_supply" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="N_column" prefWidth="32.0" text="№" />
+          <TableColumn fx:id="NameColumn" prefWidth="118.0" text="Name" />
+            <TableColumn fx:id="Price_column" prefWidth="109.0" text="Price" />
         </columns>
       </TableView>
    </children>
