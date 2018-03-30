@@ -1,6 +1,9 @@
 package model.Technics;
 
+import enums.CategoryType;
 import enums.CellOperationSystem;
+
+import java.util.ArrayList;
 
 //клас мобільних телефонів з переліку технічних товарів. Насліує клас Technics
 
@@ -45,6 +48,20 @@ public class Cellphone extends Technics {
     }
 
     public void Show() {
-        System.out.println(this);
+        System.out.println(DetailsInformation());
     }                               //метод виводу на екран полів об'єкта
+
+    @Override
+    public String DetailsInformation() {
+        return "Назва товару: " + getName() +
+                "\nКатегорія товару: " + getCategory() +
+                "\nКількість товару: " + getQuantity() +
+                "\nОпис товару: " + getDescription() +
+                "\nЦіна товару: " + getPrice() + "$" +
+                "\nГарантія: " + getGuarantee() +
+                "\nRAM інформація: " + getRamSpecific() +
+                "\nCPU інформація: " + getCpuSpecific() +
+                "\nДіагональ: " + getDiagonal() +
+                "\nЧас роботи: " + getTimeWork() + " год.";
+    }
 }

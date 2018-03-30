@@ -4,6 +4,8 @@ package model;
 
 import enums.CategoryType;
 
+import java.util.ArrayList;
+
 public abstract class Goods {
 
     //fields
@@ -80,6 +82,10 @@ public abstract class Goods {
         return this.name + "\t" + this.price + "$";
     }
 
+    public String DetailsInformation(){
+        return "";
+    }
+
     @Override
     public String toString() {
         return "Name: " + name+ "\t" + "Category: " + category + "\tPrice: " + price;
@@ -87,4 +93,6 @@ public abstract class Goods {
 
     // abstract methods
     public abstract void Show();                                //абстрактний метод виводу на екран полів
+
+
 }

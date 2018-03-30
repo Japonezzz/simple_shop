@@ -4,9 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableView;
 import controller.StoreController;
 import enums.CategoryType;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,12 +17,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Clothes;
+import model.DataInfo;
 import model.DateTerm;
 import model.Eating.SweetDrinks;
 import model.Eating.Sweets;
@@ -39,8 +43,86 @@ import java.util.*;
 
 public class FXML_Shop_Controller implements Initializable{
 
-    ArrayList<Goods> goods;
     ArrayList<Goods> founded;
+    DataInfo dataInfo;
+
+    @FXML
+    private JFXButton add_button;
+
+    @FXML
+    private AnchorPane main_pain;
+
+
+    @FXML
+    void OnAddButtonPressed(ActionEvent event) throws Exception {
+        FXML_ADD_Controller cont = new FXML_ADD_Controller();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setController(cont);
+
+        Parent root = loader.load(getClass().getResource("/FXMLAdd.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)main_pain.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void addd(Goods g)
+    {
+        dataInfo.addGood(g);
+        FillingListView(dataInfo.getGoods());
+    }
+
+    public ArrayList<Goods> getGoods()
+    {
+        return this.dataInfo.getGoods();
+    }
+
+    @FXML
+    private JFXButton delete_button;
+
+    @FXML
+    void On_Action_Delete(ActionEvent event) {
+        Integer selected = lv_info.getSelectionModel().getSelectedIndex();
+        if(!(lv_info.getSelectionModel().isEmpty())) {
+            dataInfo.setGoods(dataInfo.getGoods());
+            dataInfo.removeGood(selected);
+            FillingListView(dataInfo.getGoods());
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("You didn't chosen the good !");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private JFXButton MoreInfoButton;
+
+    @FXML
+    void On_Action_MoreInfo(ActionEvent event) {
+
+        Integer selected = lv_info.getSelectionModel().getSelectedIndex();
+        if(!(lv_info.getSelectionModel().isEmpty())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setContentText(dataInfo.getGoods().get(selected).DetailsInformation());
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Виберіть будь-ласка товар !");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+    }
+
 
     @FXML
     private JFXListView<Goods> lv_info;
@@ -48,11 +130,7 @@ public class FXML_Shop_Controller implements Initializable{
     @FXML
     private JFXButton b_tosecondary;
 
-    @FXML
-    private JFXTextField fld_search;
 
-    @FXML
-    private JFXButton b_search;
 
     @FXML
     private JFXRadioButton rb_down;
@@ -68,23 +146,13 @@ public class FXML_Shop_Controller implements Initializable{
         Parent root = FXMLLoader.load(getClass().getResource("/FXMLGoods.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        stage.setTitle("Tовари");
         stage.setScene(scene);
         stage.show();
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
-    @FXML
-    void OnActionFld_search(ActionEvent event) {
 
-    }
-
-    @FXML
-    void OnEnterPressed(KeyEvent event) {
-        if(event.getCode()== KeyCode.ENTER)
-        {
-            OnActionB_search(new ActionEvent());
-        }
-    }
     @FXML
     void OnMouseClickLV_category(MouseEvent event) {
         founded = new ArrayList<Goods>();
@@ -94,7 +162,7 @@ public class FXML_Shop_Controller implements Initializable{
     {
         case(0):
             {
-            founded.addAll(goods);
+            founded.addAll(dataInfo.getGoods());
             break;
         }
 
@@ -136,20 +204,20 @@ public class FXML_Shop_Controller implements Initializable{
             break;
         }
     }
-    for(Goods a : goods)
+    for(Goods a : dataInfo.getGoods())
         if(a.getCategory() == local_category)
             founded.add(a);
     FillingListView(founded);
 }
 
 
-    @FXML
-    void OnActionB_search(ActionEvent event) {
-        founded =  StoreController.Search_in_category(goods,fld_search.getText());
-
-        FillingListView(founded);
-
-    }
+//    @FXML
+//    void OnActionB_search(ActionEvent event) {
+//        founded =  StoreController.Search_in_category(goods,fld_search.getText());
+//
+//        FillingListView(founded);
+//
+//    }
 
     @FXML
     void OnActionRB_up(ActionEvent event) {
@@ -186,39 +254,16 @@ public class FXML_Shop_Controller implements Initializable{
         InitGoods();
     }
     private void InitCategory(){
-        ObservableList<String> items = FXCollections.observableArrayList (
-                "Усі категорії", "PC", "Смартфони", "Одяг", "Овочі", "Вода", "Солодка вода", "Солодощі");
-        lv_category.setItems(items);
+        lv_category.setItems(DataInfo.getCategories());
     }
     private void InitGoods(){
-        //StoreController store = new StoreController();
-        goods = new ArrayList();
-        goods.add(new Water(3, "Dobra Voda", 10, "Voda z krana", (double)1, "Water"));
-        goods.add( new Cellphone(1, "iPhone", 20, "Sell Phone from Apple", (double) 400, "CellPhone",
-                12, new RAM(12, "DDR5"), new CPU(5, 1.2),
-                "IOS", 5.2, 10));
-        goods.add(new Computer(2, "DELL", 15, "Famous NoteBook in the world", (double)800, "Computer", 12,
-                new RAM(12, "DDR5"), new CPU(5, 7.2),
-                new CPU(2, 5.0), new RAM(4, "DDR4")));
-        goods.add(new SweetDrinks(4, "Dobra Voda z limonom", 10, "Voda z krana", (double)1, "SweetDrinks",
-                new DateTerm(new Date(2018,01,20), (double)27,
-                        12)));
-        goods.add( new Sweets(5, "Romashka", 10, "Mnogo kroxmalia", (double)1, "Sweets",
-                new DateTerm(new Date(2018,03,20), (double)22,
-                        2)));
-        goods.add(new Vegetables(6, "Kartoha", 10, "Vkusno", (double)1, "Vegetables",
-                new DateTerm(new Date(2018,03,20), (double)15,
-                        4), "best of the best"));
-        goods.add(new Clothes(7, "Krosovki", 10, "Kloviu brend", (double)1,"Clothes",
-                new Date(2018, 02, 20), "Adibas",
-                2000, 20));
-
-        StoreController control = new StoreController(goods);
-        FillingListView(goods);
-
+        dataInfo = new DataInfo();
+        FillingListView(dataInfo.getGoods());
     }
     private void FillingListView(ArrayList<Goods> Items){
         ObservableList<Goods> goodsCollection = FXCollections.observableArrayList(Items);
         lv_info.setItems(goodsCollection);
     }
+
+
 }
