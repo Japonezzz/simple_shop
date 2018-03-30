@@ -55,11 +55,11 @@ public class FXML_Goods_Controller implements Initializable{
         @FXML
     void OnActionB_search(ActionEvent event) throws Exception {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
-            Parent root = loader.load();
-            FXML_Shop_Controller control = loader.getController();
-            ArrayList<Goods> goods = control.getGoods();
-            founded =  StoreController.Search_in_category(goods,fld_search.getText());
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
+//            Parent root = loader.load();
+//            FXML_Shop_Controller control = loader.getController();
+//            ArrayList<Goods> goods = control.getGoods();
+//            founded =  StoreController.Search_in_category(goods,fld_search.getText());
 
         //FillingListView(founded);
 

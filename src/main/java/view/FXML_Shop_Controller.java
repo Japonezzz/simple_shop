@@ -44,7 +44,6 @@ import java.util.*;
 public class FXML_Shop_Controller implements Initializable{
 
     ArrayList<Goods> founded;
-    DataInfo dataInfo;
 
     @FXML
     private JFXButton add_button;
@@ -55,9 +54,7 @@ public class FXML_Shop_Controller implements Initializable{
 
     @FXML
     void OnAddButtonPressed(ActionEvent event) throws Exception {
-        FXML_ADD_Controller cont = new FXML_ADD_Controller();
         FXMLLoader loader = new FXMLLoader();
-        loader.setController(cont);
 
         Parent root = loader.load(getClass().getResource("/FXMLAdd.fxml"));
 
@@ -67,27 +64,18 @@ public class FXML_Shop_Controller implements Initializable{
         stage.show();
     }
 
-    public void addd(Goods g)
-    {
-        dataInfo.addGood(g);
-        FillingListView(dataInfo.getGoods());
-    }
-
-    public ArrayList<Goods> getGoods()
-    {
-        return this.dataInfo.getGoods();
-    }
 
     @FXML
     private JFXButton delete_button;
 
     @FXML
     void On_Action_Delete(ActionEvent event) {
-        Integer selected = lv_info.getSelectionModel().getSelectedIndex();
+        Goods g = lv_info.getSelectionModel().getSelectedItem();
         if(!(lv_info.getSelectionModel().isEmpty())) {
-            dataInfo.setGoods(dataInfo.getGoods());
-            dataInfo.removeGood(selected);
-            FillingListView(dataInfo.getGoods());
+
+            DataInfo S = new DataInfo(DataInfo.getGoods());
+            S.removeGood(g);
+            FillingListView(S.getGoods());
         }
         else
         {
@@ -109,7 +97,7 @@ public class FXML_Shop_Controller implements Initializable{
         if(!(lv_info.getSelectionModel().isEmpty())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setContentText(dataInfo.getGoods().get(selected).DetailsInformation());
+            alert.setContentText(DataInfo.getGoods().get(selected).DetailsInformation());
             alert.setHeaderText(null);
             alert.showAndWait();
         }
@@ -129,8 +117,6 @@ public class FXML_Shop_Controller implements Initializable{
 
     @FXML
     private JFXButton b_tosecondary;
-
-
 
     @FXML
     private JFXRadioButton rb_down;
@@ -162,7 +148,7 @@ public class FXML_Shop_Controller implements Initializable{
     {
         case(0):
             {
-            founded.addAll(dataInfo.getGoods());
+            founded.addAll(DataInfo.getGoods());
             break;
         }
 
@@ -204,7 +190,7 @@ public class FXML_Shop_Controller implements Initializable{
             break;
         }
     }
-    for(Goods a : dataInfo.getGoods())
+    for(Goods a : DataInfo.getGoods())
         if(a.getCategory() == local_category)
             founded.add(a);
     FillingListView(founded);
@@ -257,13 +243,12 @@ public class FXML_Shop_Controller implements Initializable{
         lv_category.setItems(DataInfo.getCategories());
     }
     private void InitGoods(){
-        dataInfo = new DataInfo();
-        FillingListView(dataInfo.getGoods());
+        DataInfo.getGoods();
+        FillingListView(DataInfo.getGoods());
     }
-    private void FillingListView(ArrayList<Goods> Items){
+    public void FillingListView(ArrayList<Goods> Items){
         ObservableList<Goods> goodsCollection = FXCollections.observableArrayList(Items);
         lv_info.setItems(goodsCollection);
     }
-
 
 }

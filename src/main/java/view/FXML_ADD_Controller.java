@@ -1,7 +1,10 @@
 package view;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import enums.CategoryType;
+import enums.CellOperationSystem;
+import enums.MemoryType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,9 +42,11 @@ import java.util.ResourceBundle;
 
 public class FXML_ADD_Controller implements Initializable{
 
-
     static Goods g;
     private int count = 0;
+
+    @FXML
+    private JFXComboBox<String> combo_OS;
 
     @FXML
     private DatePicker field_creationdate;
@@ -64,13 +69,13 @@ public class FXML_ADD_Controller implements Initializable{
 
 
     @FXML
-    private JFXTextField field_ram2;
+    private JFXComboBox<String> field_ram2;
 
     @FXML
     private JFXTextField field_cpu2;
 
     @FXML
-    private JFXTextField field_ramgp2;
+    private JFXComboBox<String> field_ramgp2;
 
     @FXML
     private JFXTextField field_cpugp2;
@@ -129,8 +134,6 @@ public class FXML_ADD_Controller implements Initializable{
     @FXML
     private JFXTextField field_gurantee;
 
-    @FXML
-    private JFXTextField field_os;
 
     @FXML
     private JFXTextField field_cpu;
@@ -198,13 +201,10 @@ public class FXML_ADD_Controller implements Initializable{
      void onAction_Button_OK(ActionEvent event) throws Exception{
 
         Integer advisor = combo_categories.getSelectionModel().getSelectedIndex();
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
         Parent root1 = loader.load();
-        FXML_Shop_Controller control = loader.getController();
-        ArrayList<Goods> goods = control.getGoods();
         ArrayList<Integer> ids = new ArrayList<Integer>();
-        for (Goods g: goods) {
+        for (Goods g: DataInfo.getGoods()) {
             ids.add(g.getId());
         }
 
@@ -216,9 +216,9 @@ public class FXML_ADD_Controller implements Initializable{
             case 0:
             {
                 if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0
-                        || field_gurantee.getText().length()==0 || field_ram.getText().length()==0 || field_ram2.getText().length()==0 || field_cpu.getText().length()==0
+                        || field_gurantee.getText().length()==0 || field_ram.getText().length()==0 || field_ram2.getValue().length()==0 || field_cpu.getText().length()==0
                         || field_cpu2.getText().length()==0 || field_cpugp.getText().length()==0 || field_cpugp2.getText().length()==0 || field_ramgp.getText().length()==0
-                        || field_ramgp2.getText().length()==0)
+                        || field_ramgp2.getValue().length()==0)
                 {
                     negative();
                 }
@@ -226,9 +226,9 @@ public class FXML_ADD_Controller implements Initializable{
                 {
                     g = new Computer(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.Computer.toString(), Integer.valueOf(field_gurantee.getText()),
-                            new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getText()), new CPU(Integer.valueOf(field_cpu.getText()),
+                            new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getValue()), new CPU(Integer.valueOf(field_cpu.getText()),
                             Double.valueOf(field_cpu2.getText())), new CPU(Integer.valueOf(field_cpugp.getText()), Double.valueOf(field_cpugp2.getText())),
-                            new RAM(Integer.valueOf(field_ramgp.getText()), field_ramgp2.getText()));
+                            new RAM(Integer.valueOf(field_ramgp.getText()), field_ramgp2.getValue()));
 
                    positive();
                 }
@@ -238,8 +238,8 @@ public class FXML_ADD_Controller implements Initializable{
             case 1:
             {
                 if(field_name.getText().length()==0 || field_quantity.getText().length()==0 || field_desc.getText().length()==0 || field_price.getText().length()==0
-                        || field_gurantee.getText().length()==0 || field_ram.getText().length()==0 || field_ram2.getText().length()==0 || field_cpu.getText().length()==0
-                        || field_cpu2.getText().length()==0|| field_diagonal.getText().length()==0 || field_os.getText().length()==0 || field_timework.getText().length()==0)
+                        || field_gurantee.getText().length()==0 || field_ram.getText().length()==0 || field_ram2.getValue().length()==0 || field_cpu.getText().length()==0
+                        || field_cpu2.getText().length()==0|| field_diagonal.getText().length()==0 || combo_OS.getValue().length()==0 || field_timework.getText().length()==0)
                 {
                    negative();
                 }
@@ -247,8 +247,8 @@ public class FXML_ADD_Controller implements Initializable{
                 {
                     g = new Cellphone(++count, field_name.getText(),Integer.valueOf(field_quantity.getText()), field_desc.getText(),
                             Double.valueOf(field_price.getText()), CategoryType.CellPhone.toString(), Integer.valueOf(field_gurantee.getText()),
-                            new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getText()), new CPU(Integer.valueOf(field_cpu.getText()),
-                            Double.valueOf(field_cpu2.getText())), field_os.getText(), Double.valueOf(field_diagonal.getText()),
+                            new RAM(Integer.valueOf(field_ram.getText()), field_ram2.getValue()), new CPU(Integer.valueOf(field_cpu.getText()),
+                            Double.valueOf(field_cpu2.getText())), combo_OS.getValue(), Double.valueOf(field_diagonal.getText()),
                             Integer.valueOf(field_timework.getText()));
 
                   positive();
@@ -348,18 +348,16 @@ public class FXML_ADD_Controller implements Initializable{
                 break;
             }
         }
-
+        DataInfo.addGood(g);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXMLShop.fxml"));
 
         Parent root = fxmlLoader.load();
-        FXML_Shop_Controller cont = fxmlLoader.getController();
-        cont.addd(g);
+
 
         Scene scene = new Scene(root);
         Stage stage = (Stage)main_pain.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
@@ -397,7 +395,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_ramgp.setVisible(true);
                 field_ramgp2.setVisible(true);
 
-                field_os.setVisible(false);
+                combo_OS.setVisible(false);
                 label_OS.setVisible(false);
                 field_brend.setVisible(false);
                 label_brend.setVisible(false);
@@ -440,7 +438,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_cpu.setVisible(true);
                 field_cpu2.setVisible(true);
                 label_OS.setVisible(true);
-                field_os.setVisible(true);
+                combo_OS.setVisible(true);
                 label_diagonal.setVisible(true);
                 field_diagonal.setVisible(true);
                 label_timework.setVisible(true);
@@ -490,7 +488,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_cpu.setVisible(false);
                 field_cpu2.setVisible(false);
                 label_OS.setVisible(false);
-                field_os.setVisible(false);
+                combo_OS.setVisible(false);
                 label_diagonal.setVisible(false);
                 field_diagonal.setVisible(false);
                 label_timework.setVisible(false);
@@ -540,7 +538,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_cpu.setVisible(false);
                 field_cpu2.setVisible(false);
                 label_OS.setVisible(false);
-                field_os.setVisible(false);
+                combo_OS.setVisible(false);
                 label_diagonal.setVisible(false);
                 field_diagonal.setVisible(false);
                 label_timework.setVisible(false);
@@ -590,7 +588,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_cpu.setVisible(false);
                 field_cpu2.setVisible(false);
                 label_OS.setVisible(false);
-                field_os.setVisible(false);
+                combo_OS.setVisible(false);
                 label_diagonal.setVisible(false);
                 field_diagonal.setVisible(false);
                 label_timework.setVisible(false);
@@ -640,7 +638,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_cpu.setVisible(false);
                 field_cpu2.setVisible(false);
                 label_OS.setVisible(false);
-                field_os.setVisible(false);
+                combo_OS.setVisible(false);
                 label_diagonal.setVisible(false);
                 field_diagonal.setVisible(false);
                 label_timework.setVisible(false);
@@ -690,7 +688,7 @@ public class FXML_ADD_Controller implements Initializable{
                 field_cpu.setVisible(false);
                 field_cpu2.setVisible(false);
                 label_OS.setVisible(false);
-                field_os.setVisible(false);
+                combo_OS.setVisible(false);
                 label_diagonal.setVisible(false);
                 field_diagonal.setVisible(false);
                 label_timework.setVisible(false);
@@ -725,11 +723,31 @@ public class FXML_ADD_Controller implements Initializable{
         ObservableList<String> items = FXCollections.observableArrayList (
                 "PC", "Смартфони", "Одяг", "Овочі", "Вода", "Солодка вода", "Солодощі");
         combo_categories.setItems(items);
+        InitCombos();
     }
 
-    public Goods send()
-    {
-        return this.g;
+    public void InitCombos(){
+
+        ArrayList<String> os = new ArrayList<String>();
+        for (CellOperationSystem s: CellOperationSystem.values()) {
+            os.add(s.toString());
+        }
+        ObservableList<String> valuesCollection = FXCollections.observableArrayList(os);
+        combo_OS.setItems(valuesCollection);
+
+        ArrayList<String> mems = new ArrayList<String>();
+        for (MemoryType s: MemoryType.values()) {
+            mems.add(s.toString());
+        }
+        ObservableList<String> valuesCollection1 = FXCollections.observableArrayList(mems);
+        field_ram2.setItems(valuesCollection1);
+
+        ArrayList<String> mems1 = new ArrayList<String>();
+        for (MemoryType s: MemoryType.values()) {
+            mems1.add(s.toString());
+        }
+        ObservableList<String> valuesCollection2 = FXCollections.observableArrayList(mems1);
+        field_ramgp2.setItems(valuesCollection2);
     }
 
     private void positive()
