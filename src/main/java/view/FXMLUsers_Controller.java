@@ -26,7 +26,8 @@ public class FXMLUsers_Controller implements Initializable {
 
     @FXML
     private JFXTextField text_email;
-
+    @FXML
+    private JFXTextField text_id;
     public JFXTextField getText_name() {
         return text_name;
     }
@@ -39,8 +40,14 @@ public class FXMLUsers_Controller implements Initializable {
     private Date date = new Date();
     private SubscriptionManager subs;
     @FXML
-    void onAction_btn_add_user(ActionEvent event) {
-        System.out.println(text_name.getText());
+    User onAction_btn_add_user(ActionEvent event) {
+                int id = Integer.parseInt(text_id.getText());
+                String name = text_name.getText();
+                String email = text_email.getText();
+                Date date_of_reg = new Date();
+                boolean shouldsend = check_shouldsend.isSelected();
+                User adding = new User(id,name,email,date_of_reg,shouldsend);
+                return adding;
 
         //if(isValodationEmail(text_email.getText()))
             //subs.addUser(new User(text_name.getText(),text_email.getText(),date.getTime(),check_shouldsend.getBo));
